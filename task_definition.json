@@ -1,0 +1,45 @@
+{
+    "taskDefinition": {
+        "taskDefinitionArn": "arn:aws:ecs:us-east-1:411935212708:task-definition/nginx-docker-flask-task:3",
+        "containerDefinitions": [
+            {
+                "name": "flask",
+                "image": "411935212708.dkr.ecr.us-east-1.amazonaws.com/test-docker:latest",
+                "cpu": 0,
+                "memory": 256,
+                "portMappings": [
+                    {
+                        "containerPort": 5000,
+                        "hostPort": 80,
+                        "protocol": "tcp"
+                    }
+                ],
+                "essential": true,
+                "environment": [],
+                "mountPoints": [],
+                "volumesFrom": []
+            }
+        ],
+        "family": "nginx-docker-flask-task",
+        "revision": 3,
+        "volumes": [],
+        "status": "ACTIVE",
+        "requiresAttributes": [
+            {
+                "name": "com.amazonaws.ecs.capability.ecr-auth"
+            }
+        ],
+        "placementConstraints": [],
+        "compatibilities": [
+            "EXTERNAL",
+            "EC2"
+        ],
+        "requiresCompatibilities": [
+            "EC2"
+        ],
+        "cpu": "512",
+        "memory": "512",
+        "registeredAt": "2022-10-20T22:17:51.619000+00:00",
+        "registeredBy": "arn:aws:iam::411935212708:root"
+    }
+}

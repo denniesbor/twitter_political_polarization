@@ -31,10 +31,16 @@ on:
     branches: [ "main" ]
 
 env:
-  AWS_REGION: us-east-1                   # set this to your preferred AWS region, e.g. us-west-1
-  ECR_REPOSITORY: test-docker          # set this to your Amazon ECR repository name                                            # file, e.g. .aws/task-definition.json
-  CONTAINER_NAME: httpd-nginx           # set this to the name of the container in the
+  AWS_REGION: us-east-1                   
+  ECR_REPOSITORY: test-docker                                            
   CONTAINER_VERSION: latest
+  ECS_SERVICE: falsk-docker-nginx-service                
+  ECS_CLUSTER: flask-docker-nginx
+  ECS_CLUSTER_2: flask-docker-2                      
+  ECS_TASK_DEFINITION: ./task_definition.json      
+  CONTAINER_NAME: flask               
+
+
 
 permissions:
   contents: read
@@ -72,3 +78,27 @@ jobs:
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$CONTAINER_VERSION .
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$CONTAINER_VERSION
         echo "::set-output name=image::$ECR_REGISTRY/$ECR_REPOSITORY:$CONTAINER_VERSION"
+
+    - name: Fill in the new image ID in the Amazon ECS task definition
+      id: task-def
+      uses: aws-actions/amazon-ecs-render-task-definition@v1
+      with:
+        task-definition: ${{ env.ECS_TASK_DEFINITION }}
+        container-name: ${{ env.CONTAINER_NAME }}
+        image: ${{ steps.build-image.outputs.image }}
+
+    - name: Deploy Amazon ECS task definition
+      uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+      with:
+        task-definition: ${{ steps.task-def.outputs.task-definition }}
+        service: ${{ env.ECS_SERVICE }}
+        cluster: ${{ env.ECS_CLUSTER }}
+        wait-for-service-stability: true
+    
+    - name: Deploy second Amazon ECS task definition
+      uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+      with:
+        task-definition: ${{ steps.task-def.outputs.task-definition }}
+        service: ${{ env.ECS_SERVICE }}
+        cluster: ${{ env.ECS_CLUSTER_2 }}
+        wait-for-service-stability: true
