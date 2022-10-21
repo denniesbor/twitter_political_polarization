@@ -1,0 +1,25 @@
+version: '3'
+services:
+  flask_server:
+    image: test-docker
+    build:
+      context: .
+
+    command: gunicorn --bind 0.0.0.0:5000 manage:server
+    volumes:
+      - .:/usr/app/
+      - /home/denniesbor/nltk_data/:/root/nltk_data
+      # - nltk_data:/root/nltk_data
+    ports:
+      - 5000:5000
+    env_file:
+      - ./.env.dev
+  
+  nginx:
+    image: httpd-nginx
+    build: 
+      context: ./nginx/
+    ports:
+      - 1337:80
+    depends_on:
+      - flask_server

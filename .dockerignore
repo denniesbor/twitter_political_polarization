@@ -1,0 +1,5 @@
+aws
+awscliv2.zip
+**/.git
+.gitignore
+env

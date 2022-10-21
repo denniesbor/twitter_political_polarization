@@ -1,0 +1,76 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <div class="container">
+        <div class="container">
+            <h5 class="mt-3 text-info">Description</h5>
+            <div class="p-3">
+                <div class="card" style = "border: none;">
+                    <p class="card-text">A metrics dashboard examining linguistic similarities in political tweets on major public affairs issues.</p>
+                </div>
+            </div>
+        </div>
+        <div class="container mb-3">
+            <h5 class="mt-3 text-info">Contributors</h5>
+            <div class="row gx-5 text-center">
+              <div class="col">
+                <div class="p-3">
+                    <div class="card">
+                        <div class='about-img-container mt-3'>
+                            <img src="{{ url_for("static", filename="images/photo.jpg") }}"
+                            alt='Ed thumbnail' 
+                            class='about-img' 
+                            />
+                        </div>
+                        <div class="card-body">
+                        <h5 class="card-title text-secondary">Edward Oughton</h5>
+                        <div class="container text-center">
+                            <div class="row justify-content-md-center">
+                              <div class="col col-lg-2">
+                                <a href="https://twitter.com/EdwardOughton" target="_blank" rel="noopener noreferrer"><i class="bi bi-twitter display-6"></i></a>
+                              </div>
+                              <div class="col col-lg-2">
+                                <a href="https://www.linkedin.com/in/edwardoughton/" target="_blank" rel="noopener noreferrer"><i class="bi bi-linkedin display-6"></i></a>
+                              </div>
+                            </div>
+                        </div>
+                        <p class="card-text">Assistant Professor of Data Analytics George Mason University</p>
+                        </div>
+                    </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="p-3">
+                    <div class="card">
+                        <div class='about-img-container mt-3'>
+                            <img src="{{ url_for("static", filename="images/photo.jpg") }}"
+                            alt='dkbor' 
+                            class='about-img' 
+                            />
+                        </div>
+                        <div class="card-body">
+                        <h5 class="card-title text-secondary">Dennies Bor</h5>
+                        <div class="container text-center">
+                            <div class="row justify-content-md-center">
+                              <div class="col col-lg-2">
+                                <a href="https://twitter.com/bordennies" target="_blank" rel="noopener noreferrer"><i class="bi bi-twitter display-6"></i></a>
+                              </div>
+                              <div class="col col-lg-2">
+                                <a href="https://www.linkedin.com/in/denniesbor/" target="_blank" rel="noopener noreferrer"><i class="bi bi-linkedin display-6"></i></a>
+                              </div>
+                            </div>
+                        </div>
+                        <p class="card-text">Affiliate faculty, George Mason University, Department of Geography and Geoinformation Science</p>
+                        </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <div class="container">
+            <h5 class="mt-3 text-info">Funding Acknowledgement</h5>
+            <div class="modal-body">
+                <p>We would like to thank the Pluralism and Civil Exchange program of the Mercatus Center for research funding for this activity, in particular Ben Klutsey and Daniel Rothschild.</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}
