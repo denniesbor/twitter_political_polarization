@@ -37,7 +37,7 @@ env:
   ECS_SERVICE: falsk-docker-nginx-service                
   ECS_CLUSTER: flask-docker-nginx
   ECS_CLUSTER_2: flask-docker-2                      
-  ECS_TASK_DEFINITION: ./task_definition.json      
+  ECS_TASK_DEFINITION: task_definition.json      
   CONTAINER_NAME: flask               
 
 
