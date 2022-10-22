@@ -4,7 +4,7 @@
             "name": "flask",
             "image": "411935212708.dkr.ecr.us-east-1.amazonaws.com/test-docker:latest",
             "cpu": 0,
-            "memory": 128,
+            "memory": 256,
             "portMappings": [
                 {
                     "containerPort": 5000,
@@ -24,7 +24,5 @@
     "networkMode": "bridge",
     "requiresCompatibilities": [
         "EC2"
-    ],
-    "cpu": "512",
-    "memory": "1024"
+    ]
 }
