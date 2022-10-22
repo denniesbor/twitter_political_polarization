@@ -4,11 +4,11 @@
             "name": "flask",
             "image": "411935212708.dkr.ecr.us-east-1.amazonaws.com/test-docker:latest",
             "cpu": 0,
-            "memory": 256,
+            "memory": 128,
             "portMappings": [
                 {
                     "containerPort": 5000,
-                    "hostPort": 80,
+                    "hostPort": 0,
                     "protocol": "tcp"
                 }
             ],
@@ -21,9 +21,10 @@
     "family": "nginx-docker-flask-task",
     "volumes": [],
     "placementConstraints": [],
+    "networkMode": "bridge",
     "requiresCompatibilities": [
         "EC2"
     ],
     "cpu": "512",
-    "memory": "512"
+    "memory": "1024"
 }
