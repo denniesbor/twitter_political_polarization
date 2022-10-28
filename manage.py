@@ -1,6 +1,6 @@
 from flask.cli import FlaskGroup
 from apps.routes import app
-# 
+
 server = app.server
 
 cli = FlaskGroup(app)

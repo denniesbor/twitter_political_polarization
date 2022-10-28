@@ -20,9 +20,6 @@ from apps.utils import get_df
 from apps.layouts import dashboard_area
 from apps import app
 
-# load env variables
-from dotenv import load_dotenv
-load_dotenv()
 
 server = app.server
 
