@@ -74,7 +74,8 @@ date_picker = html.Div([
     ])
 
 sidebar = html.Div([
-    html.H2("Controls", className="text-dark"),
+    html.Div([html.P("This webpage is not designed for small-screen devices!!")],className="alert alert-danger"),
+    html.H2("Controls", className="text-dark text-center mb-6"),
     dbc.Card([
         date_picker,
         cascaded_policy_menu,
@@ -83,11 +84,10 @@ sidebar = html.Div([
         ],
             body=True)],
                 style={
-                    "margin-left": "2rem",
                     "margin-right": 0,
+                    "margin-bottom": "1rem",
                     "padding": 0,
-                    "background-color": "#f8f9fa",
-                    "min-width": "160px"
+                    "background-color": "#f8f9fa"
                     })
 
 # -------------------------------- Main Section Layout--------------------------------
@@ -132,12 +132,9 @@ tabs = dbc.Tabs([
     ], id="tabs", active_tab="all", style={"fontsize":"12px"})
 
 # page container
-content = html.Div(dbc.Container([
-    dbc.Row([
-        dbc.Col(tabs, md=12)
-        ]), 
-    dcc.Loading(output_container)],
-    fluid=True))
+content = html.Div([
+    html.Div(tabs, className="mb-4"), 
+    dcc.Loading(output_container)])
 
 # --------- Dashboards --------------------------------
 

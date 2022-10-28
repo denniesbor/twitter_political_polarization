@@ -26,6 +26,11 @@ body {
     background-color: #D3D3D3 !important;
 }
 
+main {
+    margin-left: 2rem !important;
+    margin-right: 2rem !important;
+}
+
 .navbar-bar{
     font-family: montserratregular;
 }
@@ -112,6 +117,7 @@ body {
 
 .wc-canvas {
     width: 100% !important;
+    max-height: 300px;
 }
 
 /* tabs (dems, reps) */
@@ -131,3 +137,11 @@ body {
 .bi-twitter {
     color: #00acee;
 }
+
+/* small screen warning */
+
+@media only screen and (min-width: 700px) {
+    .alert, .alert-danger {
+      display: none;
+    }
+  }
