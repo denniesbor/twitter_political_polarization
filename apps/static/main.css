@@ -22,10 +22,15 @@
     font-family: montserratregular;
 }
 
+body {
+    background-color: #D3D3D3 !important;
+}
+
 .navbar-bar{
     font-family: montserratregular;
 }
 
+/* about section */
 .about-img-container {
     position: relative;
     width: 150px;
@@ -44,14 +49,85 @@
     position: relative;
   }
 
+  .card-title {
+    font-size: 18px;
+  }
+
+  .card-text {
+    font-size: 14px;
+  }
+
+.nav-icon {
+    height: 3rem;
+}
+
+/* dash graphs */
+
+.dash-graph {
+    height: 100% !important;
+    width: 100% !important;
+}
+/* sidebar date picker */
+.DateInput, .DateInput_1 {
+    border-radius: 4px 0 0 4px !important;
+}
+
+.DateInput_input, .DateInput_input_1 {
+    Height: 20px !important;
+    Width: 100% !important;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.SingleDatePickerInput__withBorder {
+    border-radius: 4px 0 0 4px;
+    border: 1px solid #ccc !important;
+}
+
+.tab-content {
+    display: none !important;
+}
+
+.form-label {
+    font-size: 10px;
+    margin-top: 0;
+    font-weight: 600;
+}
+
+/* container  */
+.container-fluid {
+    padding-left: 0 !important;
+}
+
+.col-md-2 {
+    padding: 0 !important;
+}
+
+/* empty tab between tabs and navigation */
+.modebar {
+    display: none !important;
+}
+
+/* word cloud */
+
+.wc-canvas {
+    width: 100% !important;
+}
+
+/* tabs (dems, reps) */
+.nav-tabs {
+    margin-bottom: 0.5 !important;
+}
+
+/* social media icons */
+.bi {
+   font-size: 18px;
+}
+
 .bi-linkedin {
     color: #0e76a8;
 }
 
 .bi-twitter {
     color: #00acee;
-}
-
-.nav-icon {
-    height: 3rem;
 }

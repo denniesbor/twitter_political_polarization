@@ -4,3 +4,7 @@ awscliv2.zip
 .gitignore
 env
 edit
+apps.old
+.env
+nlp
+nginx
