@@ -6,4 +6,4 @@ server = app.server
 cli = FlaskGroup(app)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    cli()
