@@ -1,5 +1,5 @@
 # pull official base image
-FROM python:3.10.6-slim as base
+FROM python:3.10.6-slim-buster as base
 
 ENV WORKDIR=/usr/app
 
@@ -17,7 +17,7 @@ RUN .venv/bin/pip install --no-cache-dir -r requirements.txt && \
 
 
 # Now multistage build
-FROM python:3.10.6-slim
+FROM python:3.10.6-slim-buster
 
 # set work directory
 WORKDIR /usr/app

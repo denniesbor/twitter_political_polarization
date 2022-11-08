@@ -3,7 +3,7 @@
 *.nls.*.json
 *.i18n.json
 .Dockerfil.bak
-
+db-back-up/tweets.csv
 __pycache__
 *.py[cod]
 *$py.class

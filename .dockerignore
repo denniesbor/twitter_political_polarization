@@ -9,6 +9,7 @@ apps.old
 nlp
 nginx
 .git
+db-back-up
 
 # translation files
 *.xlf
