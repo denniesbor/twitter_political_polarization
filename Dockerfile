@@ -32,7 +32,7 @@ COPY --from=base /usr/app /usr/app
 COPY . $WORKDIR
 
 ENV PATH="/usr/app/.venv/bin:$PATH"
-
+# 
 RUN export FLASK_APP=apps/__init__.py
 
 CMD ["gunicorn", "--bind", "0.0.0.0:5000", "manage:server"]
