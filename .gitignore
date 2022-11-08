@@ -2,6 +2,7 @@
 *.xlf
 *.nls.*.json
 *.i18n.json
+.Dockerfil.bak
 
 __pycache__
 *.py[cod]

@@ -205,13 +205,14 @@ def get_tweets(username, party, engine, update=True):
 
                 tweet = tweet_obj.rawContent #tweet
                 clean_text = clean_tweets(tweet)
-                social_policy, geopolitical_policy, policies = get_policy_cat(clean_text)
+                if(engine):
+                    social_policy, geopolitical_policy, policies = get_policy_cat(clean_text)
+                else:
+                    social_policy, geopolitical_policy, policies = (None, None, None)
                 #tweet attrs
                 if(not re.search(compile, tweet)) and (len(clean_text.strip())>2):
 
-                    if social_policy or geopolitical_policy:
-
-                        tweet_list.append(   
+                    tweet_list.append(
                         dict(tweet_id = tweet_obj.id,
                         username = tweet_obj.user.username,
                         party = party,
@@ -223,8 +224,7 @@ def get_tweets(username, party, engine, update=True):
                         source =  tweet_obj.sourceLabel,
                         social_policy = social_policy,
                         geopolitical_policy = geopolitical_policy,
-                        policies = policies)
-                        )
+                        policies = policies))
             else:
                 break
 
@@ -234,9 +234,10 @@ def get_tweets(username, party, engine, update=True):
         else:
             # create dataframe
             df = pd.DataFrame(tweet_list)
-            df = compute_sentiments(df)
-
-            dataframe_tosql(df, engine)
+            
+            if(engine):
+                df = compute_sentiments(df)
+                dataframe_tosql(df, engine)
             return df
                
     except ValueError:

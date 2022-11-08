@@ -1,22 +1,38 @@
 # pull official base image
-FROM python:3.10.6-slim-buster
+FROM python:3.10.6-slim as base
 
 ENV WORKDIR=/usr/app
 
 # set work directory
 WORKDIR $WORKDIR
 
+# install dependencies
+RUN python -m venv .venv && \
+    .venv/bin/pip install --no-cache-dir -U pip setuptools
+
+COPY ./requirements.txt $WORKDIR/requirements.txt
+
+RUN .venv/bin/pip install --no-cache-dir -r requirements.txt && \
+    find $WORKDIR/.venv \( -type d -a -name test -o -name tests \) -o \( -type f -a -name '*.pyc' -o -name '*.pyo' \) -exec rm -rf '{}' \+
+
+
+# Now multistage build
+FROM python:3.10.6-slim
+
+# set work directory
+WORKDIR /usr/app
+
 # set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-# install dependencies
-RUN pip install --upgrade pip
-COPY ./requirements.txt $WORKDIR/requirements.txt
-RUN pip install -r requirements.txt
+COPY --from=base /usr/app /usr/app
 
-RUN export FLASK_APP=apps/__init__.py
 # copy project
 COPY . $WORKDIR
+
+ENV PATH="/usr/app/.venv/bin:$PATH"
+
+RUN export FLASK_APP=apps/__init__.py
 
 CMD ["gunicorn", "--bind", "0.0.0.0:5000", "manage:server"]
