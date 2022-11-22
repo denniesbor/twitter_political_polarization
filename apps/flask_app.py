@@ -214,7 +214,11 @@ def update_table(controls):
 
     df, _ = global_store(controls)
 
-    tweets = df.sample(n=100, random_state=101)
+    if df.shape[0] > 100:
+        tweets = df.sample(n=100, random_state=101)
+    else:
+        tweets = df.copy()
+
     table_df = tweets[["party", "tweet"]]
 
     fig = html.Div(

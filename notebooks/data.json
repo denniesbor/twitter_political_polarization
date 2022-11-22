@@ -1,0 +1,102 @@
+{
+   "Social Policies": {
+      "All": "all",
+      "LGBTQ": [
+         "transphobia",
+         "sexual identity",
+         "homophobia",
+         "trans",
+         "LGBTQ",
+         "biphobia",
+         "lgbtq"
+      ],
+      "internet": [
+         "broadband",
+         "internet"
+      ],
+      "women health, and rights": [
+         "abortion",
+         "maternal",
+         "momnibus",
+         "reproductive",
+         "birth",
+         "breast",
+         "pregnancy",
+         "pregnant"
+      ],
+      "substance and mental health": [
+         "mental",
+         "suicide",
+         "restoringhope",
+         "marijuana",
+         "substance"
+      ],
+      "guns and assault weapons": [
+         "guns",
+         "arms",
+         "shooter",
+         "assault",
+         "weapons",
+         "gun"
+      ],
+      "immigration": [
+         "southern",
+         "immigration",
+         "migrant",
+         "border",
+         "immigrants"
+      ],
+      "energy": [
+         "gallon",
+         "fossil",
+         "electric",
+         "gas",
+         "fuel",
+         "oil",
+         "pump",
+         "renewable",
+         "energy",
+         "petroleum"
+      ],
+      "climate change": [
+         "greenhouse",
+         "fossil",
+         "climate",
+         "gas",
+         "emissions",
+         "carbon"
+      ]
+   },
+   "Geo Political Policies": {
+      "All": "all",
+      "china": [
+         "china",
+         "ccp",
+         "communist",
+         "chinese"
+      ],
+      "chips science act": [
+         "science act",
+         "chips act",
+         "chips"
+      ],
+      "taiwan": [
+         "taiwan"
+      ],
+      "ukraine russia": [
+         "vladimir",
+         "invasion",
+         "supplemental",
+         "putin",
+         "zelensky",
+         "appropriations",
+         "russia",
+         "ukraine",
+         "ukrainian",
+         "russian",
+         "invasion",
+         "nord stream",
+         "nordstream"
+      ]
+   }
+}
