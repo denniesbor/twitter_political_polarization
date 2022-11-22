@@ -28,7 +28,7 @@ stopwords_set.update(
 url = "https://pressgallery.house.gov/member-data/members-official-twitter-handles"
 
 # Opening JSON file
-with open("../data.json") as json_file:
+with open("../notebooks/data.json") as json_file:
     categories = json.load(json_file)
 
 
@@ -59,7 +59,7 @@ def get_policy_cat(text):
 
         for policy in categories[policy_type]:
             if policy != "All":
-                search = "|".join(categories[policy_type][policy])
+                search = "|".join([f"{p} " for p in categories[policy_type][policy]])
                 regexp = re.search(r"%s" % search, text, re.I)
 
                 if regexp:
@@ -76,7 +76,7 @@ def get_policy_cat(text):
             else:
                 pass
 
-    return pd.Series([social_policy, geopolitical_policy, policies.split("|")])
+    return pd.Series([social_policy, geopolitical_policy, str(policies.split("|"))])
 
 
 def get_house_reps():
@@ -182,9 +182,14 @@ def compute_sentiments(df):
     return df
 
 
-def get_time_delta(update):
+def get_time_delta(update: int) -> int:
     """Get the time delta of the tweets to be scraped. Initializing the database
-    is set to first jan of 2020, and regular updates as one day
+    is set to the first Jan of 2021. A user can specify the time delta to fetch the tweets since today
+
+    input update: int
+
+    returns -> int
+        time delta in unix
     """
 
     # date time
@@ -193,7 +198,7 @@ def get_time_delta(update):
     delta = (date_now - date_from).days
 
     if update:
-        delta = 1
+        delta = update
 
     time_delta1 = datetime.timedelta(days=delta)
     date_since = date_now - time_delta1
@@ -204,7 +209,7 @@ def get_time_delta(update):
     return unix
 
 
-def fetch_tweets(username, party, engine, update=False):
+def fetch_tweets(username, party, update=False):
     """A function that fetch tweets from a user and return as pandas DF"""
 
     unix = get_time_delta(update)
@@ -252,22 +257,20 @@ def fetch_tweets(username, party, engine, update=False):
 
         # drop empty policies
         df = df[df["policies"].map(lambda text: len(text)) > 1]
+        df = compute_sentiments(df)
 
-        if engine:
-            df = compute_sentiments(df)
-            dataframe_tosql(df, engine)
         return df
 
 
-def tweets(update_time: int) -> pd.DataFrame:
+def tweets(update_time: int, engine=False) -> pd.DataFrame:
 
     """export tweets into a pandas dataframe for analysis"""
 
     dfs = []
     house_reps = get_house_reps()
-    for user, party in house_reps[0:]:
+    for user, party in house_reps[0:10]:
 
-        df = get_tweets(user, party, update=update_time)
+        df = fetch_tweets(user, party, update=update_time)
 
         try:
             if df:
@@ -277,4 +280,8 @@ def tweets(update_time: int) -> pd.DataFrame:
     if len(dfs) > 1:
         df = pd.concat(dfs)
         df.reset_index(inplace=True, drop=True)
+
+        if engine:
+            dataframe_tosql(df, engine)
+
         return df

@@ -21,7 +21,7 @@ from sqlalchemy import (
 
 # import db credentials
 from db_cred import secr
-from sentiment import get_tweets, get_house_reps
+from sentiment import tweets
 
 """ connect database """
 
@@ -31,6 +31,7 @@ db_user = secr["username"]
 db = secr["dbname"]
 host = secr["host"]
 port = secr["port"]
+
 
 # base model
 Base = declarative_base()
@@ -75,15 +76,13 @@ Session = sessionmaker(engine)
 
 session = Session()
 
+# def recreate_database():
+
+#     "This functions drops existing database and creates a new one"
+#     Base.metadata.drop_all(engine)
+#     Base.metadata.create_all(engine)
+
+# recreate_database()
 
 # populate the database
-house_reps = get_house_reps()
-for user, party in house_reps[100:]:
-
-    df = get_tweets(user, party, engine, update=False)
-
-    try:
-        if df:
-            pass
-    except ValueError:
-        pass
+tweets(update_time=90, engine=engine)

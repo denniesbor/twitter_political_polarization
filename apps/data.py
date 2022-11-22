@@ -1,11 +1,11 @@
-'''
-Data to be renderd by the app
+"""
+Data to be renderd from the app
 
-'''
+"""
 import json
 
 # read json file c
-with open('./data.json') as json_file:
+with open("./notebooks/data.json") as json_file:
     all_options = json.load(json_file)
 
 
