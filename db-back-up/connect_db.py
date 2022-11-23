@@ -76,13 +76,13 @@ Session = sessionmaker(engine)
 
 session = Session()
 
-# def recreate_database():
+def recreate_database():
 
-#     "This functions drops existing database and creates a new one"
-#     Base.metadata.drop_all(engine)
-#     Base.metadata.create_all(engine)
+    "This functions drops existing database and creates a new one"
+    Base.metadata.drop_all(engine)
+    Base.metadata.create_all(engine)
 
 # recreate_database()
 
 # populate the database
-tweets(update_time=90, engine=engine)
+tweets(update_time=325, engine=engine)
