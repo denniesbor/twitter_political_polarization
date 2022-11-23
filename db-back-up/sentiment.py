@@ -268,7 +268,7 @@ def tweets(update_time: int, engine=False) -> pd.DataFrame:
 
     dfs = []
     house_reps = get_house_reps()
-    for user, party in house_reps[0:10]:
+    for user, party in house_reps[0:]:
 
         df = fetch_tweets(user, party, update=update_time)
 
