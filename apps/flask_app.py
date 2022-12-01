@@ -43,7 +43,7 @@ def set_policy_options(selected_policy):
         return [{"label": "All", "value": "all"}]
     else:
         return [
-            {"label": i.capitalize(), "value": i} for i in all_options[selected_policy]
+            {"label": i, "value": i} for i in sorted(all_options[selected_policy], key=lambda x: x.lower())
         ]
 
 

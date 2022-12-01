@@ -25,7 +25,7 @@ cascaded_policy_menu = html.Div(
         dbc.Label("Policy Category", style=custom_style),
         dcc.Dropdown(
             id="policy-category",
-            options=[{"label": k, "value": k} for k in all_options.keys()],
+            options=[{"label": k, "value": k} for k in sorted(list(all_options.keys()), key=lambda x: x.lower())],
             value="Social Policies",
             clearable=False,
             className="dropdown text-dark mb-6",

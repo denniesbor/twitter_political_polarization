@@ -21,7 +21,27 @@ stopwords_set = set(stopwords.words("english"))
 
 # update stopwords set
 stopwords_set.update(
-    ["s", "will", "amp", "must", "rt", "american", "americans", "re", "000"]
+    [
+        "s",
+        "will",
+        "amp",
+        "must",
+        "rt",
+        "american",
+        "americans",
+        "re",
+        "000",
+        "today",
+        "us",
+        "day",
+        "get",
+        "let",
+        "done",
+        "across",
+        "country",
+        "last",
+        "week",
+    ]
 )
 
 # link us reps website
