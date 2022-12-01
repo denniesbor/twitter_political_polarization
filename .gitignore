@@ -4,6 +4,7 @@
 *.i18n.json
 .Dockerfil.bak
 db-back-up/tweets.csv
+db-back-up/*.csv
 __pycache__
 *.py[cod]
 *$py.class

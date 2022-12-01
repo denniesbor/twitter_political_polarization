@@ -2,14 +2,14 @@ name: Deploy to Amazon ECS
 
 on:
   push:
-    branches: [ "production" ]
+    branches: [ "main" ]
 
 env:
   AWS_REGION: us-east-1
   ECR_REPOSITORY: test-docker
   CONTAINER_VERSION: latest
   ECS_SERVICE: flask-docker-nginx-service
-  ECS_CLUSTER: flask-app
+  ECS_CLUSTER: flask-
   ECS_TASK_DEFINITION: task_definition.json
   CONTAINER_NAME: flask
 

@@ -2,6 +2,7 @@
 
 import pandas as pd
 import os
+from sentiment import dataframe_tosql
 
 from sqlalchemy import and_
 from sqlalchemy import create_engine
@@ -76,13 +77,41 @@ Session = sessionmaker(engine)
 
 session = Session()
 
+
 def recreate_database():
 
     "This functions drops existing database and creates a new one"
     Base.metadata.drop_all(engine)
     Base.metadata.create_all(engine)
 
+
 # recreate_database()
 
 # populate the database
-tweets(update_time=325, engine=engine)
+# tweets(update_time=325, engine=engine)
+
+df = pd.read_csv("vader_sentiment_tweets.csv")
+
+df = df[
+    [
+        "tweet_id",
+        "username",
+        "party",
+        "tweet",
+        "clean_text",
+        "favorite_count",
+        "retweet_count",
+        "created_at",
+        "source",
+        "positive_sentiment",
+        "neutral_sentiment",
+        "negative_sentiment",
+        "compound_sentiment",
+        "sentiment_text",
+        "social_policy",
+        "geopolitical_policy",
+        "policies",
+    ]
+]
+
+dataframe_tosql(df, engine)

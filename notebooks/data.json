@@ -1,7 +1,7 @@
 {
    "Social Policies": {
       "All": "all",
-      "LGBTQ": [
+      "LGBTQ Community": [
          "transphobia",
          "sexual identity",
          "homophobia",
@@ -10,28 +10,20 @@
          "biphobia",
          "lgbtq"
       ],
-      "internet": [
+      "Broadband Internet": [
          "broadband",
          "internet"
       ],
-      "women health, and rights": [
-         "abortion",
-         "maternal",
-         "momnibus",
-         "reproductive",
-         "birth",
-         "breast",
-         "pregnancy",
-         "pregnant"
+      "Abortion": [
+         "abortion"
       ],
-      "substance and mental health": [
+      "Substance Abuse and Mental Health": [
          "mental",
          "suicide",
-         "restoringhope",
          "marijuana",
          "substance"
       ],
-      "guns and assault weapons": [
+      "Gun Control": [
          "guns",
          "arms",
          "shooter",
@@ -39,62 +31,50 @@
          "weapons",
          "gun"
       ],
-      "immigration": [
+      "Immigration and Border Control": [
          "southern",
          "immigration",
          "migrant",
          "border",
          "immigrants"
       ],
-      "energy": [
-         "gallon",
+      "Fossil Fuels": [
          "fossil",
-         "electric",
-         "gas",
-         "fuel",
          "oil",
-         "pump",
-         "renewable",
-         "energy",
          "petroleum"
       ],
-      "climate change": [
+      "Climate Change": [
          "greenhouse",
-         "fossil",
          "climate",
-         "gas",
          "emissions",
          "carbon"
       ]
    },
    "Geo Political Policies": {
       "All": "all",
-      "china": [
+      "Chinese Communist Party": [
          "china",
          "ccp",
          "communist",
          "chinese"
       ],
-      "chips science act": [
+      "Chips Science Act": [
          "science act",
          "chips act",
          "chips"
       ],
-      "taiwan": [
+      "Taiwan": [
          "taiwan"
       ],
-      "ukraine russia": [
+      "Ukraine Russia": [
          "vladimir",
          "invasion",
-         "supplemental",
          "putin",
          "zelensky",
-         "appropriations",
          "russia",
          "ukraine",
          "ukrainian",
          "russian",
-         "invasion",
          "nord stream",
          "nordstream"
       ]
