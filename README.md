@@ -20,4 +20,4 @@ The notebooks are divided into five sections:
 
 5. Sentiment analysis of the tweets
 
-5. Analysis of the data accessible from this link
+6. Analysis of the data accessible from this [link](https://github.com/kdbor/Semantic-Analysis-of-Twitter-Political-Texts/blob/main/notebooks/6.%20inferential_statistics.ipynb)
