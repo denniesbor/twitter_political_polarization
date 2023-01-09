@@ -5,6 +5,14 @@
 .Dockerfil.bak
 db-back-up/tweets.csv
 db-back-up/*.csv
+db-back-up/*.csv
+notebooks/*.csv
+notebooks/*.docx
+notebooks/*.csv#
+notebooks/.ipynb_checkpoints/*
+notebooks/*.txt
+.dockerignore
+!notebooks/vader_sentiment_tweets.csv
 __pycache__
 *.py[cod]
 *$py.class
@@ -54,7 +62,8 @@ target/
 
 # Jupyter Notebook
 .ipynb_checkpoints
-
+notebooks/*.csv
+db-back-up/*.csv
 # IPython
 profile_default/
 ipython_config.py
@@ -85,7 +94,7 @@ ENV/
 .idea/**/uiDesigner.xml 
 .idea/**/gradle.xml 
 .idea/**/libraries 
-*.iws /out/ 
+*.iws /out/ fatal: Not possible to fast-forward, aborting.
 
 # Sublime Text
 *.tmlanguage.cache 
