@@ -12,7 +12,10 @@ notebooks/*.csv#
 notebooks/.ipynb_checkpoints/*
 notebooks/*.txt
 .dockerignore
-!notebooks/vader_sentiment_tweets.csv
+.vscode/settings.json
+ notebooks/-home-ubuntu-NLP-Project-.txt\ 2
+ notebooks/-home-ubuntu-*
+!notebooks/handles_scores.csvf 
 __pycache__
 *.py[cod]
 *$py.class

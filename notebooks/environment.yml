@@ -1,4 +1,4 @@
-name: nlp
+name: nlp-env
 channels:
   - intel
   - conda-forge
