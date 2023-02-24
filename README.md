@@ -1,23 +1,54 @@
-# **Using Relational Semantic Lexicons to Identify Strategies to Boost Pluralism**
+# **Quantifying polarization across political groups on key policy issues using sentiment analysis**
+There is growing concern over increased political polarization across democratic economies, e.g., in the US., UK, France, Italy, Spain, etc. Unfortunately, this polarization has spurred greater division and intolerance among social groups. 
 
-A repository that contains the source code and the data used in the analysis. The tweets from the 116th US Congress were obtained using the Python Twitter scraping library for the years 2020 and 2022. The project is divided into two parts: web application and data analytics.
+Taking the US political groups as the benchmark, we apply the code in the notebooks section of this repository to investigate the degree of polarization on key policy. Two sets of policies are analyzed, domestic (e.g., abortion, LGBTQ, etc.) and foreign (e.g., China, Russia., ).
 
-## **Web Application**
+Citation
+---------
+- Bor, D., Lee, B. S., & Oughton, E. J. (2023). Quantifying polarization across political groups on key policy issues using sentiment analysis (arXiv:2302.07775). arXiv. https://doi.org/10.48550/arXiv.2302.07775
 
-The Flask-Dash app is hosted on AWS and serves as the web interface for the project. The app codebase is contained here.
 
-## **Data collection, cleaning, and analysis**
+Example Method
+-------------
 
-The notebooks are divided into five sections:
+The method utilizes natural language processing tools to compute the sentiment of the tweets from the 115th and 116th congress members. The [Govtrack.us](https://www.govtrack.us/congress/members/report-cards/2020) data provides the scores indicating how politically left or right a member is. Five political groups are derived from the GovTrack political scores ranging from Far Left, Center Left, Centrist, Center Right, and Far Right. The tweets are then grouped into a policy category using a filtering algorithm. Finally, an independent t-test model is applied to test for statistical significance at 95% confidence of the mean sentiments across the political groups in each studied policy. This serves as the basis for polarization ranking.
 
-1. Scraping Twitter usernames from the US House of Representatives and Senate
+## Figure 1 Quantifying polarization method overview
+<p align="center">
+  <img src="./figures/MethodBox.png" />
+</p>
 
-2. Collecting the tweets
+Example Results
+------------
 
-3. Using GovTrack to extract the polarization index of the congressmen
+[VADER](https://github.com/cjhutto/vaderSentiment) Python package is applied to compute the sentiment values of the tweets. The sentiments towards the investigated policies by the political groups are reported descriptively in *figure 2* and *figure 3*. The polarization ranking is based on the results from the independent test.
 
-4. Cleaning the datasets
+## Figure 2 Key US geopolitical policy themes and associated sentiment scores
+<p align="center">
+  <img src="./figures/geo_policies_cluster.png" />
+</p>
 
-5. Sentiment analysis of the tweets
+## Figure 3 Key US domestic policy themes and associated sentiment scores
+<p align="center">
+  <img src="./figures/social_policies_cluster.png" />
+</p>
 
-6. Analysis of the data accessible from this [link](https://github.com/kdbor/Semantic-Analysis-of-Twitter-Political-Texts/blob/main/notebooks/6.%20inferential_statistics.ipynb)
+## Figure 4 Ranking of polarization levels
+<p align="center">
+  <img src="./figures/ranking.png" />
+</p>
+
+Data
+------------
+
+Download the Twitter dataset from Zenodo using the link below. Copy the data into the data_analysis folder.
+- https://zenodo.org/record/7628481
+
+Generate Results
+----------------
+
+Use the data_analysis folder of this repository as the working directory to run the notebooks. The recommended method is using Conda to create and manage the environment and run Jupyter notebooks.
+
+	conda env create -f environment.yml
+
+Start Jupyter lab
