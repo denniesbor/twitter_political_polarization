@@ -42,7 +42,7 @@ jobs:
       - name: Build
         run: npm run build
         working-directory: ./dashboard
-      - name: Move build to docs
+      - name: rename build to docs
         run: mv dist docs
         working-directory: ./dashboard
       - name: Setup Pages
