@@ -37,7 +37,7 @@ jobs:
           cache: "npm"
       - name: Install dependencies
         working-directory: ./dashboard
-        run: npm install
+        run: cd ./dashboard && npm install
       - name: Build
         working-directory: ./dashboard
         run: npm run build
