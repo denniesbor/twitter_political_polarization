@@ -38,15 +38,17 @@ jobs:
           cache-dependency-path: ./dashboard/package-lock.json
       - name: Install dependencies
         run: npm install
+        working-directory: ./dashboard
       - name: Build
         run: npm run build
+        working-directory: ./dashboard
       - name: Setup Pages
         uses: actions/configure-pages@v3
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
           # Upload dist repository
-          path: "./dist"
+          path: "./dashboard/dist"
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v1
