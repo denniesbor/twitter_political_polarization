@@ -8,21 +8,18 @@ const height = window.innerHeight;
 const width = window.innerWidth;
 
 // parliament chart
-const svg = d3
-  .select("#parliament-seat")
-  .append("svg")
-  // .attr("viewBox", `0 0 300 300`)
-  //   .attr("width", width)
-  .attr("height", height);
+const svg = d3.select("#parliament-seat").append("svg");
+// .attr("viewBox", `0 0 300 300`)
+//   .attr("width", width)
 
 // menus
 const menuContainer = d3.select("#menu-options");
 
-// const xMenu = menuContainer
-//   .append("div")
-//   .attr("class", "col")
-//   .append("div")
-//   .attr("class", "form-floating mb-3");
+const xMenu = menuContainer
+  .append("div")
+  .attr("class", "col")
+  .append("div")
+  .attr("class", "form-floating mb-3");
 
 const yMenu = menuContainer
   .append("div")
@@ -31,7 +28,8 @@ const yMenu = menuContainer
   .attr("class", "form-floating mb-3");
 
 // Boxplot chart
-const boxPlotFig = d3.select("#dataviz")
+const boxPlotFig = d3
+  .select("#dataviz")
   .append("svg")
   .attr("height", height)
   .attr("width", width);
@@ -39,7 +37,8 @@ const boxPlotFig = d3.select("#dataviz")
 
 //  sidebar
 
-const sideBarMenu = d3.select("#sidebar")
+const sideBarMenu = d3
+  .select("#sidebar")
   .append("div")
   .attr("class", "col")
   .attr("class", "form-floating mb-3");
@@ -71,15 +70,21 @@ const parseRow = (row) => {
 };
 
 const partyColors = { D: "blue", R: "red", "": "#808080", I: "000000" };
+// user inputs to filter the data
+const gist =
+  "https://gist.githubusercontent.com/denniesbor/32d9b7a67ff9d885c62e70eddc320430/raw/de7067dd10bed40d6ff1348ab4ce28e7c5075e80/";
+
+let descStat;
+let testStatData;
+let politicalScores;
+
+let politicalGroup = "all";
+let politicalParty = "all";
+let policy = "Abortion";
+let house = "all";
 
 // testing with data
 const main = async () => {
-  // user inputs to filter the data
-
-  let politicalGroup = "all";
-  let politicalParty = "all";
-  let policy = "Abortion";
-
   const options = {
     politicalGroup: [
       { label: "far_right", value: "Far Right" },
@@ -99,13 +104,15 @@ const main = async () => {
 
   // read datasets
 
-  const gist =
-    "https://gist.githubusercontent.com/denniesbor/32d9b7a67ff9d885c62e70eddc320430/raw/de7067dd10bed40d6ff1348ab4ce28e7c5075e80/";
+  if (!descStat && !testStatData && !politicalScores) {
+    descStat = await d3.csv(gist + "descriptives.csv", parseDesc);
+    testStatData = await d3.csv(gist + "ind_t_test.csv");
 
-  const descStat = await d3.csv(gist + "descriptives.csv", parseDesc);
-  const testStatData = await d3.csv(gist + "ind_t_test.csv");
-
-  const politicalScores = await d3.csv(gist + "members.csv", parseRow);
+    politicalScores = await d3.csv(
+      "https://gist.githubusercontent.com/denniesbor/32d9b7a67ff9d885c62e70eddc320430/raw/1bf03cfffaead4184ed16ba3e8a48cf003ba1162/members.csv",
+      parseRow
+    );
+  }
 
   // get the list of policies
 
@@ -131,8 +138,8 @@ const main = async () => {
 
   const filterPoliticalScores = (
     dataArray = newData,
-    partyChoice = "all",
-    politicalGroup = "all"
+    partyChoice = politicalParty,
+    houseValue = house
   ) => {
     const filtered = (data, attr, value) => {
       if (value === "all") {
@@ -144,11 +151,7 @@ const main = async () => {
       }
     };
 
-    let labeValue = options.politicalGroup.find(
-      (d) => d.label === politicalGroup
-    ).value;
-
-    if (partyChoice === "all" && politicalGroup === "all") {
+    if (partyChoice === "all" && house === "all") {
       const dems = filtered(dataArray, "Party", "D");
       const ind = filtered(dataArray, "Party", "I");
       const reps = filtered(dataArray, "Party", "R");
@@ -156,12 +159,7 @@ const main = async () => {
 
       return dems.concat(ind, reps, unknown);
     } else {
-      const firstData = filtered(
-        dataArray,
-        "govtrack_class",
-        politicalGroup === "all" ? politicalGroup : labeValue
-      );
-
+      const firstData = filtered(dataArray, "house", houseValue);
       const secondData = filtered(firstData, "Party", partyChoice);
 
       return secondData;
@@ -172,7 +170,7 @@ const main = async () => {
 
   // prepare and filter boxplot data based on the selected user policy
 
-  const filterBoxPlotData = (policy) => {
+  const filterBoxPlotData = (policy, party) => {
     let plotData;
 
     politicalParty === "all"
@@ -186,10 +184,8 @@ const main = async () => {
       (d) => d.party
     );
 
-    // group by party
+    // group by policy
     let reducedByParty = reduced.get(policy);
-
-    descStat.filter((d) => d.party === "D");
 
     //   // groupby politicalGroup
     let reducedPolicy = Array.from(reducedByParty, ([key, value]) => ({
@@ -235,11 +231,11 @@ const main = async () => {
 
     politicalParty === "all"
       ? (testData = Object.entries(filteredIndTest).slice(2, -1))
-        ? politicalParty === "D"
-        : testData.push([
-            "Left Centrist-Far Left",
-            filteredIndTest["Left Centrist-Far Left"],
-          ])
+      : politicalParty === "D"
+      ? testData.push([
+          "Left Centrist-Far Left",
+          filteredIndTest["Left Centrist-Far Left"],
+        ])
       : testData.push([
           "Far Right-Right Centrist",
           filteredIndTest["Far Right-Right Centrist"],
@@ -252,11 +248,16 @@ const main = async () => {
 
   const box = (policy) => {
     const currentWidthBox = parseInt(d3.select("#dataviz").style("width"), 10);
-    const currentHeightBox = parseInt(d3.select("#dataviz").style("height"), 10);
+    const currentHeightBox = parseInt(
+      d3.select("#dataviz").style("height"),
+      10
+    );
+
+    const boxAspectRatio = currentWidthBox / currentHeightBox;
 
     return boxPlot()
-      .data(filterBoxPlotData(policy))
-      .height(currentHeightBox * 0.75)
+      .data(filterBoxPlotData(policy, politicalParty))
+      .height(currentHeightBox * boxAspectRatio)
       .width(currentWidthBox)
       .divWidth(width)
       .tTestData(filterTTestData(policy));
@@ -274,7 +275,9 @@ const main = async () => {
       10
     );
 
-    svg.attr("width", currentWidth).attr("height", currentHeight);
+    const windowAspectRatio = currentWidth / currentHeight;
+
+    svg.attr("width", currentWidth).attr("height", currentWidth / 2);
 
     const seatMap = parliamentChart()
       .data(data)
@@ -299,22 +302,23 @@ const main = async () => {
       })
   );
 
-  // xMenu.call(
-  //   menu()
-  //     .label("Political Group")
-  //     .id("political-group-label")
-  //     .columnWidth(4)
-  //     .options(options.politicalGroup.reverse())
-  //     .on("change", (value) => {
-  //       politicalGroup = value;
-  //       const xMenuData = filterPoliticalScores(
-  //         newData,
-  //         politicalParty,
-  //         politicalGroup
-  //       );
-  //       createChart(xMenuData);
-  //     })
-  // );
+  xMenu.call(
+    menu()
+      .label("House")
+      .id("house")
+      .columnWidth(12)
+      .options([
+        { label: "all", value: "All" },
+        { label: "senate", value: "Senate" },
+        { label: "house", value: "House of Representatives" },
+      ])
+      .on("change", (value) => {
+        console.log(value);
+        house = value;
+        const xMenuData = filterPoliticalScores(newData, politicalParty, house);
+        createChart(xMenuData);
+      })
+  );
 
   yMenu.call(
     menu()
@@ -334,4 +338,4 @@ const main = async () => {
   );
 };
 
-export default main
+export default main;

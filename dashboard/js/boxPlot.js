@@ -1,6 +1,6 @@
 import { colorPicker } from "./colors.js";
+import { mousemove, mouseleave, mouseover } from "./toolTip.js";
 import * as d3 from "d3";
-
 
 export const boxPlot = () => {
   let data;
@@ -29,33 +29,42 @@ export const boxPlot = () => {
       .range([width * 0.1, width - width * 0.05])
       .domain(politicalGroups.domain())
       .padding(1);
+
     innerSelection
       .append("g")
       .attr("transform", `translate(0,${height - height * scaleFactor + 10})`)
+      .transition()
+      .duration(1500)
+      .delay(1000)
       .call(d3.axisBottom(x))
       .attr("stroke-width", 1.5)
       .selectAll("text")
       .attr("transform", "translate(-40,30)rotate(-45)")
-      .attr("font-size", "12px")
+      .attr("font-size", "12px");
 
     // Show the y scale
+
+    console.log()
+
     const y = d3
       .scaleLinear()
-      .domain([-1.2, 1.2])
-      .range([height - height * scaleFactor, height * scaleFactor]);
+      .domain(d3.extent(data.map((d) => d.max).concat(data.map((d) => d.min))))
+      .range([height - height * scaleFactor, height * 0.2]);
     innerSelection
       .append("g")
       .attr("transform", `translate(${width * 0.1},0)`)
+      .transition()
+      .duration(1500)
+      .delay(1000)
       .call(d3.axisLeft(y))
       .attr("stroke-width", 1.5)
-      .attr("font-size", "12px")
+      .attr("font-size", "12px");
 
     // Color scale
     const myColor = d3
       .scaleSequential()
       .interpolator(d3.interpolateInferno)
       .domain([-1, 1]);
-
 
     // Show the main vertical line
     innerSelection
@@ -65,6 +74,9 @@ export const boxPlot = () => {
         (enter) =>
           enter
             .append("line")
+            .transition()
+            .duration(2000)
+            .delay(1000)
             .attr("x1", (d) => x(d.govtrack_class))
             .attr("x2", (d) => x(d.govtrack_class))
             .attr("y1", (d) => y(d.min))
@@ -93,6 +105,9 @@ export const boxPlot = () => {
         (enter) =>
           enter
             .append("rect")
+            .transition() // and apply changes to all of them
+            .duration(2000)
+            .delay(1000)
             .attr("x", (d) => x(d.govtrack_class) - boxWidth / 2)
             .attr("y", (d) => y(d.q3))
             .attr("height", (d) => y(d.q1) - y(d.q3))
@@ -110,7 +125,10 @@ export const boxPlot = () => {
             .attr("height", (d) => y(d.q1) - y(d.q3))
             .attr("width", boxWidth),
         (exit) => exit.remove()
-      );
+      )
+      .on("mouseover", mouseover)
+      .on("mousemove", mousemove)
+      .on("mouseleave", mouseleave);
 
     // show median, max and min horizontal lines
 
@@ -123,6 +141,10 @@ export const boxPlot = () => {
           (enter) =>
             enter
               .append("line")
+              .merge(innerSelection) // get the already existing elements as well
+              .transition() // and apply changes to all of them
+              .duration(2000)
+              .delay(1000)
               .attr("y1", (d) => y(d[value]))
               .attr("y2", (d) => y(d[value]))
               .attr("x1", (d) => x(d.govtrack_class) - boxWidth / divider)
@@ -178,47 +200,56 @@ export const boxPlot = () => {
 
       if (isNaN(+pValue)) {
         let str = "*";
+        let groups = politicalGroups.domain();
+        let element1 = d.split("-")[0];
+        let element2 = d.split("-")[1];
+
+        let indexOne = customFilter(groups, element1).at(-1);
+        let indexTwo = customFilter(groups, element2).at(-1);
+
+        if (!indexOne) {
+          groups.push(element1);
+          indexOne = customFilter(groups, element1).at(-1);
+        }
+        if (!indexTwo) {
+          groups.push(element2);
+          indexTwo = customFilter(groups, element2).at(-1);
+        }
+
+        // Show the x scale
+        const newXScale = d3
+          .scaleBand()
+          .range([width * 0.1, width - width * 0.05])
+          .domain(groups)
+          .padding(1);
 
         str = str.repeat(pValue.split("*").slice(1).length);
 
-        let groups = politicalGroups.domain();
+        let groupOneName = groups[indexOne];
+        let groupTwoName = groups[indexTwo];
 
-        let groupOneName = groups[customFilter(groups, d.split("-")[0]).at(-1)];
+        getMax(groupOneName) > getMax(groupTwoName)
+          ? ((currentMax = getMax(groupOneName)),
+            (name1 = groupOneName),
+            (name2 = groupTwoName))
+          : ((currentMax = getMax(groupTwoName)),
+            (name1 = groupTwoName),
+            (name2 = groupOneName));
 
-        let groupTwoName = groups[customFilter(groups, d.split("-")[1]).at(-1)];
+        // check if max exists
 
-        getMax(groupTwoName) > getMax(groupOneName)
-          ? (currentMax = getMax(groupTwoName))
-          : (currentMax = getMax(groupOneName));
+        if (max) {
+          max > currentMax ? (max = max + 0.07) : (max = currentMax + 0.08);
+        } else {
+          max = currentMax;
+        }
 
-        const getValues = (d1, d2) => {
-          if (max) {
-            max + 0.1 > currentMax
-              ? (max = max + 0.1)
-              : (max = currentMax + 0.1);
-          } else {
-            getMax(groupTwoName) > getMax(groupOneName)
-              ? (max = getMax(groupTwoName) + 0.1)
-              : (max = getMax(groupOneName) + 0.1);
-          }
+        let moveToX = newXScale(name1);
+        let moveToY = y(max + 0.05);
 
-          d1 > d2
-            ? ((name1 = groupOneName), (name2 = groupTwoName))
-            : ((name1 = groupTwoName), (name2 = groupOneName));
-        };
-
-        getValues(getMax(groupOneName), getMax(groupTwoName));
-
-        let moveToX = x(name1);
-        let moveToY = y(max + 0.1);
-
-        let moveToXTop = y(max + 0.15);
-        let moveToRight = x(name2);
-        let moveToRightDown = y(max + 0.1);
-
-        //   if (nextItemMax > OneMax) {
-        //     moveToXTop = y(nextItemMax + nextItemMax*2*i);
-        //   }
+        let moveToXTop = y(max + 0.1);
+        let moveToRight = newXScale(name2);
+        let moveToRightDown = y(max + 0.05);
 
         path = [
           [moveToX, moveToY],
@@ -248,6 +279,9 @@ export const boxPlot = () => {
         (enter) =>
           enter
             .append("path")
+            .transition()
+            .delay(2500)
+            .duration(1000)
             .attr("d", (d) => lineGenerator(d[0], d[1]))
             .attr("stroke", "black")
             .attr("stroke-width", 1.5)
@@ -266,6 +300,10 @@ export const boxPlot = () => {
         (enter) =>
           enter
             .append("text")
+            .merge(innerSelection) // get the already existing elements as well
+            .transition() // and apply changes to all of them
+            .duration(3000)
+            .delay(2000)
             .attr("x", (d) => d[0])
             .attr("y", (d) => {
               return d[1];
@@ -283,7 +321,7 @@ export const boxPlot = () => {
         (exit) => exit.remove()
       );
 
-          // Add X axis label:
+    // Add X axis label:
     // innerSelection
     // .append("text")
     // .attr("text-anchor", "end")
@@ -291,7 +329,6 @@ export const boxPlot = () => {
     // .attr("y", height)
     // .text("Sentiment")
     // .attr("transform", "translate(-25,-25)rotate(-90)");
-
   };
 
   my.width = function (_) {

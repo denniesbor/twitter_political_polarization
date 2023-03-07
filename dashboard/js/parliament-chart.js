@@ -1,5 +1,7 @@
 import { getXYCoordinates } from "./data.js";
 import { colorPicker } from "./colors.js";
+import { mousemove, mouseleave, mouseover } from "./toolTip.js";
+
 import * as d3 from "d3";
 
 export const parliamentChart = () => {
@@ -9,7 +11,6 @@ export const parliamentChart = () => {
   let height;
   let data;
   let rawData;
-
 
   // //////////////////////////////////////////////////////////////////////////
   // Selection call
@@ -44,50 +45,7 @@ export const parliamentChart = () => {
     // First remove any existing debug lines
     innerSelection.select("g.debug").remove();
 
-    // create a tooltip
-    const toolTip = d3
-      .select("#parliament-seat")
-      .append("g")
-      .attr("class", "tooltip")
-      .style("opacity", 0)
-      .attr("class", "tooltip")
-      .style("background-color", "white")
-      .style("border", "solid")
-      .style("border-width", "2px")
-      .style("border-radius", "5px")
-      .style("padding", "5px");
-
-    toolTip.select("g.tooltip").remove();
-
-    // create new tooltip
-    toolTip.append("g").attr("class", "tooltip");
-
-    // Three function that change the tooltip when user hover / move / leave a cell
-    const mouseover = function (d) {
-      // Remove existing chart
-      toolTip.style("opacity", 1);
-      d3.select(this).style("stroke", "black").style("opacity", 1);
-    };
-    const mousemove = function (event, d) {
-      // Remove existing chart
-      toolTip
-        .html(
-          d.name +
-            "<br>" +
-            d.Party +
-            "<br>" +
-            d["St/Dis"] +
-            "<br>" +
-            `Govtrack Score ${d.score}`
-        )
-        .style("left", event.pageX + 70 + "px")
-        .style("top", event.pageY + 30 + "px");
-    };
-    const mouseleave = function (d) {
-      toolTip.style("opacity", 0);
-      d3.select(this).style("stroke", "none").style("opacity", 1);
-    };
-
+    // transition
     innerSelection
       .selectAll("circle")
       .data(processedData)
@@ -95,8 +53,12 @@ export const parliamentChart = () => {
         (enter) =>
           enter
             .append("circle")
+            .transition()
+            .duration(1000)
+            .ease(d3.easeLinear)
             .attr("cx", (d) => d.x)
             .attr("cy", (d) => d.y)
+            .delay((d,i) => 2*i)
             .attr("r", (d) => d.seatRadius)
             .attr(
               "fill",
@@ -105,22 +67,23 @@ export const parliamentChart = () => {
 
         (update) =>
           update
-            .transition()
-            .duration(750)
             .attr("cx", (d) => d.x)
-            .attr("cy", (d) => d.y),
+            .attr("cy", (d) => d.y)
+            .transition()
+            .duration(2000),
 
         (exit) => exit.remove()
       )
       .on("mouseover", mouseover)
       .on("mousemove", mousemove)
       .on("mouseleave", mouseleave);
+
+    // animate circle inputs
   };
 
   // //////////////////////////////////////////////////////////////////////////
   // Getters and Setters
 
-  // Sets the width and the height of the graphic
 
   my.width = function (_) {
     return arguments.length ? ((width = +_), my) : width;

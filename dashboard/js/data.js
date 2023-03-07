@@ -1,8 +1,9 @@
 import * as d3 from "d3";
 
 export const getXYCoordinates = (height, width, innerRadiusCoef, nSeats) => {
-  const outerParliamentRadius = Math.min(width / 2, height);
-  const innerParliementRadius = outerParliamentRadius * innerRadiusCoef;
+
+  const outerParliamentRadius = Math.min(width/2, height);
+  const innerParliementRadius = outerParliamentRadius * 0.4;
 
   // util
   function series(s, n) {
@@ -86,14 +87,17 @@ export const getXYCoordinates = (height, width, innerRadiusCoef, nSeats) => {
   };
 
   // translated x and y values
-  const x = d3.scaleLinear()
+  const x = d3
+    .scaleLinear()
     .domain(d3.extent(seats, seatX))
     .nice()
-    .range([20, width - 20]);
-  const y = d3.scaleLinear()
+    .range([width * 0.1, width - width * 0.1]);
+
+  const y = d3
+    .scaleLinear()
     .domain(d3.extent(seats, seatY))
     .nice()
-    .range([20, height-20]);
+    .range([height * 0.1, height - height * 0.1]);
 
   const translatedTweets = seats.map((d) => ({
     x: x(seatX(d)),
