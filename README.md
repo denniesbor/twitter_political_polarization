@@ -2,7 +2,7 @@
 ## 1. Data Analysis
 There is growing concern over increased political polarization across democratic economies, e.g., in the US., UK, France, Italy, Spain, etc. Unfortunately, this polarization has spurred greater division and intolerance among social groups. 
 
-Taking the US political groups as the benchmark, we apply the code in the notebooks section of this repository to investigate the degree of polarization on key policy. Two sets of policies are analyzed, domestic (e.g., abortion, LGBTQ, etc.) and foreign (e.g., China, Russia., ).
+Taking the US political groups as the benchmark, we apply the code in the notebooks section of this repository to investigate the degree of polarization on key policies. Two sets of policies are analyzed, domestic (e.g., abortion, LGBTQ, etc.) and foreign (e.g., China, Russia., ).
 
 Citation
 ---------
