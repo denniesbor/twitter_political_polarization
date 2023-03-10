@@ -109,7 +109,7 @@ const main = async () => {
     testStatData = await d3.csv(gist + "ind_t_test.csv");
 
     politicalScores = await d3.csv(
-      "https://gist.githubusercontent.com/denniesbor/32d9b7a67ff9d885c62e70eddc320430/raw/1bf03cfffaead4184ed16ba3e8a48cf003ba1162/members.csv",
+      "https://gist.githubusercontent.com/denniesbor/32d9b7a67ff9d885c62e70eddc320430/raw/626ec9935008bf240f9f4f4cac5f1aa281f89a34/members.csv",
       parseRow
     );
   }
