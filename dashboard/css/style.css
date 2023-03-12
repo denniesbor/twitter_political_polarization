@@ -10,6 +10,12 @@ body {
   border-right: 1px solid grey;
 }
 
+/* nav about button */ 
+
+#about button {
+  border: none;
+}
+
 #sidebar {
     position: relative;
     height: 100%;
@@ -19,7 +25,7 @@ body {
     z-index: 1;
     right: 0;
     /* background-color: #111; */
-    transition: visibility 0.3s linear,opacity 0.3s linear;
+    transition: visibility 2s linear,opacity 2s linear;
     border: 0.1rem solid #444;
     border-radius: 4px;
 }
