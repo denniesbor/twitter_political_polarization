@@ -1,8 +1,93 @@
 body {
-  /* font-size: 24px; */
-  margin-right: 2rem;
-  margin-left: 2rem;
+    min-height: 100vh;
+    background-color: aliceblue;
+    min-height: -webkit-fill-available;
+  }
+
+/* menu options */
+
+#menu-options {
+  border-right: 1px solid grey;
 }
+
+#sidebar {
+    position: relative;
+    height: 100%;
+    opacity: 0;
+    /* width: 100%; */
+    /* position: absolute; */
+    z-index: 1;
+    right: 0;
+    /* background-color: #111; */
+    transition: visibility 0.3s linear,opacity 0.3s linear;
+    border: 0.1rem solid #444;
+    border-radius: 4px;
+}
+
+#sidebar .bi-x-circle {
+    position: absolute;
+    color: #444;
+    top: 0;
+    right: 0;
+    font-size: 36px;
+    margin-left: 50px;
+    margin: 0.5rem 0;
+  }
+
+  .sidebar-items {
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  /* about section */
+.about-img-container {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin: 0 auto;
+    margin-bottom: 1.5rem;
+  }
+  
+.about-img {
+    width: 100%;
+    display: block;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    position: relative;
+  }
+
+  .card-title {
+    font-size: 18px;
+  }
+
+  .card-text {
+    font-size: 14px;
+  }
+  
+  /* social media icons */
+.bi {
+   font-size: 20px;
+}
+
+.bi-linkedin {
+    color: #0e76a8;
+}
+
+.bi-twitter {
+    color: #00acee;
+}
+
+
+.bi-github {
+    color: #171515;
+}
+
+/* tool tip */
+
 .tooltip {
   position: absolute;
   pointer-events: none;
@@ -23,4 +108,3 @@ body {
 .Centrist {
   opacity: 0.7
 }
-

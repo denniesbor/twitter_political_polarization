@@ -22,7 +22,7 @@ function menu() {
       .join("select")
       .attr("class", "form-select")
       .attr("id", id)
-      .attr("class", `col-md-${columnWidth}`)
+      .attr("class", `col col-sm-${columnWidth}`)
       .on("change", (event) => {
         listeners.call("change", null, event.target.value);
       })

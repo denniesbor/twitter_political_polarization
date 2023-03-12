@@ -16,14 +16,18 @@ const svg = d3.select("#parliament-seat").append("svg");
 const menuContainer = d3.select("#menu-options");
 
 const xMenu = menuContainer
-  .append("div")
-  .attr("class", "col")
+  .select("#house")
   .append("div")
   .attr("class", "form-floating mb-3");
 
 const yMenu = menuContainer
+  .select("#party")
   .append("div")
-  .attr("class", "col")
+  .attr("class", "form-floating mb-3");
+
+//  sidebar
+const sideBarMenu = menuContainer
+  .select("#policy")
   .append("div")
   .attr("class", "form-floating mb-3");
 
@@ -31,17 +35,9 @@ const yMenu = menuContainer
 const boxPlotFig = d3
   .select("#dataviz")
   .append("svg")
-  .attr("height", height)
+  .attr("height", height*0.8)
   .attr("width", width);
 // .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-//  sidebar
-
-const sideBarMenu = d3
-  .select("#sidebar")
-  .append("div")
-  .attr("class", "col")
-  .attr("class", "form-floating mb-3");
 
 // parse rows of data from boxPlot
 const parseDesc = (row) => {
@@ -275,8 +271,6 @@ const main = async () => {
       10
     );
 
-    const windowAspectRatio = currentWidth / currentHeight;
-
     svg.attr("width", currentWidth).attr("height", currentWidth / 2);
 
     const seatMap = parliamentChart()
@@ -313,7 +307,6 @@ const main = async () => {
         { label: "house", value: "House of Representatives" },
       ])
       .on("change", (value) => {
-        console.log(value);
         house = value;
         const xMenuData = filterPoliticalScores(newData, politicalParty, house);
         createChart(xMenuData);
