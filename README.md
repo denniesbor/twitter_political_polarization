@@ -12,7 +12,7 @@ Citation
 Example Method
 -------------
 
-The method utilizes natural language processing tools to compute the sentiment of the tweets from the 115th and 116th congress members. The [Govtrack.us](https://www.govtrack.us/congress/members/report-cards/2020) data provides the scores indicating how politically left or right a member is. Five political groups are derived from the GovTrack political scores ranging from Far Left, Center Left, Centrist, Center Right, and Far Right. The tweets are then grouped into a policy category using a filtering algorithm. Finally, an independent t-test model is applied to investigate the statistical significance at 95% confidence of the mean sentiments across the political groups in each studied policy. This serves as the basis for polarization ranking.
+The method utilizes natural language processing tools to compute the sentiment of the tweets from the 117th congress members. The [Govtrack.us](https://www.govtrack.us/congress/members/report-cards/2020) data provides the scores indicating how politically left or right a member is. Five political groups are derived from the GovTrack political scores ranging from Far Left, Center Left, Centrist, Center Right, and Far Right. The tweets are then grouped into a policy category using a filtering algorithm. Finally, an independent t-test model is applied to test for statistical significance at 95% confidence of the mean sentiments across the political groups in each studied policy. This serves as the basis for polarization ranking.
 
 ### Figure 1 Quantifying polarization method overview
 <p align="center">
