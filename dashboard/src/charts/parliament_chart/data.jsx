@@ -1,8 +1,7 @@
 import * as d3 from "d3";
 
 export const getXYCoordinates = (height, width, innerRadiusCoef, nSeats) => {
-
-  const outerParliamentRadius = Math.min(width/2, height);
+  const outerParliamentRadius = Math.min(width / 2, height);
   const innerParliementRadius = outerParliamentRadius * 0.4;
 
   // util
@@ -106,4 +105,31 @@ export const getXYCoordinates = (height, width, innerRadiusCoef, nSeats) => {
   }));
 
   return translatedTweets;
+};
+
+// filter political data into parties and political groups
+export const filterPoliticalScores = (dataArray, partyChoice, house) => {
+  const filtered = (data, attr, value) => {
+    if (value === "all") {
+      return data.sort((a, b) => a.score - b.score);
+    } else {
+      return data
+        .filter((d) => d[attr] === value)
+        .sort((a, b) => a.score - b.score);
+    }
+  };
+
+  if (partyChoice === "all" && house === "all") {
+    const dems = filtered(dataArray, "Party", "D");
+    const ind = filtered(dataArray, "Party", "I");
+    const reps = filtered(dataArray, "Party", "R");
+    const unknown = filtered(dataArray, "Party", "Unknown");
+
+    return dems.concat(ind, reps, unknown);
+  } else {
+    const firstData = filtered(dataArray, "house", house);
+    const secondData = filtered(firstData, "Party", partyChoice);
+
+    return secondData;
+  }
 };

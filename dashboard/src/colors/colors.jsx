@@ -1,5 +1,8 @@
+
+const partyColors = { D: "blue", R: "red", "": "#808080", I: "000000" };
+
 // pick circle colors
-export const colorPicker = (party, govtrack_class) => {
+const colorPicker = (party, govtrack_class) => {
   const colorMap = {
     "Far Left": "#2c49d5",
     "Left Centrist": "#4e65d3",
@@ -15,3 +18,5 @@ export const colorPicker = (party, govtrack_class) => {
     } else return "#dda8a8";
   } else return colorMap[govtrack_class];
 };
+
+export {partyColors, colorPicker}
