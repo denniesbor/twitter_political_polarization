@@ -62,6 +62,12 @@ export const ContextWrapper = (props) => {
     parseRow
   );
 
+  let loading = false;
+  // check for loading
+  if (q1Loading || q2Loading || q3Loading) {
+    loading = true;
+  }
+
   const toolTip = select("#root").append("g").attr("class", "tooltip");
 
   return (
@@ -82,6 +88,7 @@ export const ContextWrapper = (props) => {
         q2Loading,
         q1Loading,
         q3Loading,
+        loading,
         descStat,
         testStatData,
         politicalScores,

@@ -1,30 +1,34 @@
-import { useEffect } from "react";
+import { useContext } from "react";
 import Footer from "./footer";
 import Navbar from "./navbar";
 import Menu from "./menu";
 import MainCharts from "./charts";
+import Loader from "./loader"
 
-import { QueryClient, QueryClientProvider } from "react-query";
-import { ContextWrapper } from "./context/AppContext";
-const queryClient = new QueryClient();
+import { AppContext } from "./context/AppContext";
 
 function App() {
+  const { loading } = useContext(AppContext);
+
   // scroll to top on reload
   window.onbeforeunload = function () {
     window.scrollTo(0, 0);
   };
 
+
   return (
-    <QueryClientProvider client={queryClient}>
-      <ContextWrapper>
-        <Navbar />
-        <div className="main-section">
-          <Menu />
-          <MainCharts />
-        </div>
-        <Footer />
-      </ContextWrapper>
-    </QueryClientProvider>
+    <>
+    {loading && <Loader />}
+    {!loading && (
+      <>
+    <Navbar />
+    <div className="main-section">
+        <Menu />
+        <MainCharts />
+      </div>
+      <Footer />
+      </>)}
+    </>
   );
 }
 
