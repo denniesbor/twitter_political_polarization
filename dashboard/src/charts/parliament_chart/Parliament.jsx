@@ -161,7 +161,7 @@ const Parliament = () => {
     <>
       <div className="parliament-desc">
         <p>
-          {`Parliamentary seat graph of the members of ${
+          {`Congressional seat graph of the members of ${
             house == "all"
               ? ""
               : house == "house"
