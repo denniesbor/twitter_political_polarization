@@ -77,7 +77,7 @@ export const ContextWrapper = (props) => {
   } else {
     // Disables Background Scrolling whilst the SideDrawer/Modal is open
     if (typeof window != "undefined" && window.document) {
-      document.body.style.overflow = "hidden";
+      document.body.style.overflow = "unset";
     }
   }
 
