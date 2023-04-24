@@ -167,7 +167,7 @@ const Parliament = () => {
               : house == "house"
               ? "the Lower House of "
               : "the Upper House of "
-          }117th Congress,  classified according to GovTrack scores.`}
+          }117th Congress.`}
         </p>
       </div>
       <div className="political_group">

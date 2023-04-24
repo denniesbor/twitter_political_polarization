@@ -19,6 +19,7 @@ export const ContextWrapper = (props) => {
   const [politicalParty, setPoliticalParty] = useState("all");
   const [policy, setPolicy] = useState("Abortion");
   const [house, setHouse] = useState("all");
+  const [isOpen, setIsOpen] = useState(false);
 
   // functions used in parse read data
   // parse rows of data from boxPlot
@@ -70,6 +71,16 @@ export const ContextWrapper = (props) => {
 
   const toolTip = select("#root").append("g").attr("class", "tooltip");
 
+  // disable background scrolling when about sidebar is open
+  if (isOpen) {
+    document.body.style.overflow = "hidden";
+  } else {
+    // Disables Background Scrolling whilst the SideDrawer/Modal is open
+    if (typeof window != "undefined" && window.document) {
+      document.body.style.overflow = "hidden";
+    }
+  }
+
   return (
     <AppContext.Provider
       value={{
@@ -92,6 +103,8 @@ export const ContextWrapper = (props) => {
         descStat,
         testStatData,
         politicalScores,
+        isOpen,
+        setIsOpen,
       }}
     >
       {props.children}

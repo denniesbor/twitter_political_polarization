@@ -331,10 +331,7 @@ const BoxPlot = () => {
           The boxplot chart below illustrates the descriptive statistics for the
           sentiments expressed by political groups towards key policies. The
           significance bars indicate the groups whose means exhibit
-          statistically significant differences at a confidence level of 95%,
-          determined using the independent t-test method. This approach is
-          employed to ascertain the extent of polarization within the political
-          groups.
+          statistically significant differences at a confidence level of 95%.
         </p>
       </div>
       <svg

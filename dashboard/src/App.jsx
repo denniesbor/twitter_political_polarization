@@ -3,7 +3,8 @@ import Footer from "./footer";
 import Navbar from "./navbar";
 import Menu from "./menu";
 import MainCharts from "./charts";
-import Loader from "./loader"
+import Method from "./project-desc";
+import Loader from "./loader";
 
 import { AppContext } from "./context/AppContext";
 
@@ -15,19 +16,20 @@ function App() {
     window.scrollTo(0, 0);
   };
 
-
   return (
     <>
-    {loading && <Loader />}
-    {!loading && (
-      <>
-    <Navbar />
-    <div className="main-section">
-        <Menu />
-        <MainCharts />
-      </div>
-      <Footer />
-      </>)}
+      {loading && <Loader />}
+      {!loading && (
+        <>
+          <Navbar />
+          <div className="main-section">
+            <Menu />
+            <MainCharts />
+            <Method/>
+          </div>
+          <Footer />
+        </>
+      )}
     </>
   );
 }

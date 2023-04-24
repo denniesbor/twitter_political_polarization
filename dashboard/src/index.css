@@ -28,6 +28,11 @@ p {
 .navbar .navbrand {
   font-size: 1.5rem;
 }
+.navbar .project-desc {
+  font-size: 1rem;
+  color: #222;
+  cursor: pointer;
+}
 .navbar .navbrand a {
   text-decoration: none;
   color: #222;
@@ -103,10 +108,47 @@ select:hover {
   padding-bottom: 1rem;
 }
 
-.sidebar-content {
-  padding: 20px;
+
+.about-sidebar {
+  position: fixed;
+  right: -50%;
+  top: 4rem;
+  height: calc(100vh - 5rem);
+  width: 50%;
+  background-color: rgba(255, 255, 255, 0.9);
+  transition: right 0.5s ease;
+  z-index: 1;
+  overflow: scroll;
 }
 
+.about-sidebar.open {
+  right: 1rem;
+}
+
+.sidebar-content {
+  padding: 20px;
+  background-color: #f1f5f9;
+  border: 1px solid #94a3b8;
+}
+.close-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.methodology-box {
+  padding: 10px;
+}
+
+.methodology-box img {
+  display: block;
+  max-width: 100%;
+  max-height: 50vh;
+  width: auto;
+  height: auto;
+}
 /* select party buttons */
 .political_group {
   display: flex;
@@ -211,6 +253,7 @@ button:hover {
     transform: rotate(360deg);
   }
 }
+/* footer section */
 
 .footer {
   display: flex;
@@ -233,7 +276,8 @@ button:hover {
 .contributors {
   display: flex;
   justify-content: space-around;
-  width: 50%;
+  width: 70%;
+  height: 100%;
   border: 1px solid #cbd5e1;
 }
 
@@ -281,15 +325,24 @@ button:hover {
   color: #171515;
 }
 
+/* sidebar close button */
+
+.fa-times {
+  font-size: 20px;
+}
+.fa-times:hover {
+  color: #808080;
+}
+
 .acknowledgment {
-  width: calc(50% - 1rem);
-  margin: 1rem;
+  width: calc(30% - 1rem);
   border: 1px solid #cbd5e1;
   /* border-radius: 5%; */
 }
 
 .acknowledgment h4 {
   text-align: center;
+  padding-top: 1rem;
 }
 
 @media screen and (max-width: 768px) {
@@ -309,6 +362,11 @@ button:hover {
   }
   .middle-div {
     height: fit-content;
+  }
+  .about-sidebar {
+    right: -100%;
+    height: calc(100vh - 5rem);
+    width: 100%;
   }
 }
 
