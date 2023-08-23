@@ -1,0 +1,236 @@
+,username,ideology,party,tweet,sentiment,vote,ideology_cluster,clean_text,vader,bert_sentiment
+195,RepLoisFrankel,0.3111903799,Democrat,.@POTUS continues spewing fake news about the southern Border - sending troops there is immoral and a waste of resources.,negative,No,Left Centrist,continues spewing fake news southern border sending troops immoral waste resources,-0.835999,Negative
+81,RepMarkTakano,0.1449594304,Democrat,".@HHSgov plans to establish a new child detention facility in the Inland Empire. The need for more facilities to house immigrant children is a direct result of the President Trump's anti-immigrant agenda. I will not stand for this.
+
+Read my full statement: https://t.co/acYVfylMDH https://t.co/vmdPUjmjmg",negative,No,Far Left,plans establish new child detention facility inland empire need facilities house immigrant children direct result president trump anti immigrant agenda stand read full statement,-0.585899,Negative
+51,RepFrankLucas,0.5983174413,Republican,"The border crisis isn't seasonal. It's a growing humanitarian and security crisis that the Biden Administration continues to ignore. 
+
+Since February 1st, more than 1.2M illegal immigrants have been apprehended at the border. We must secure our border.
+https://t.co/Z6Y58FMCDQ",negative,Aye,Centrist,border crisis seasonal growing humanitarian security crisis biden administration continues ignore since february 1st 2m illegal immigrants apprehended border must secure border,-0.868899,Negative
+190,RepLindaSanchez,0.235497032,Democrat,"This is not who we are. 
+
+The President’s actions to significantly cut refugee admissions is not only wrong – it goes against our legal responsibilities to protect human rights.
+
+#RefugeesWelcome",negative,No,Left Centrist,president actions significantly cut refugee admissions wrong goes legal responsibilities protect human rights refugeeswelcome,-0.273199,Negative
+46,RepSamGraves,0.5911741331,Republican,"We’re getting the wall built and securing our border. We’ve got another 162 miles under construction.
+ 
+I’ve been calling for this for years. 
+ 
+I’m glad @realDonaldTrump has made our national security a priority. #BuildTheWall #SecureOurBorder https://t.co/OaIeLzOvjP",positive,No,Centrist,getting wall built securing border got another 162 miles construction calling years glad made national security priority buildthewall secureourborder,0.771701,Positive
+125,RepGrothman,0.8162504012,Republican,"Last year, there was a dramatic increase of Heroin, Meth and Fentanyl that illegally came across our southern border.
+
+We must act NOW to secure the border and make America safe. https://t.co/thDOxv5U3Z",negative,No,Far Right,last year dramatic increase heroin meth fentanyl illegally came across southern border must act secure border make america safe,0.526701,Neutral
+169,RepDLesko,0.9138081496,Republican,"I joined my Congressional colleagues to receive a briefing from the Department Homeland Security Inspector General and discuss the ongoing border crisis. 
+
+With Title 42 set to end in just a few days, it is more important than ever to secure our southern border. https://t.co/ZT0vBPQoja",negative,No,Far Right,joined congressional colleagues receive briefing department homeland security inspector general discuss ongoing border crisis title 42 set end days important ever secure southern border,0.128001,Neutral
+115,RepDeSaulnier,0.1403635066,Democrat,"While the State Department has expanded Special Immigrant Visas, we must do more like expediting visas, granting Temporary Protected Status to Afghans living in the U.S., and getting urgent humanitarian aid to support civilians who fled to Kabul.
+https://t.co/Q5hkegsFgW",positive,No,Far Left,state department expanded special immigrant visas must like expediting visas granting temporary protected status afghans living getting urgent humanitarian aid support civilians fled kabul,0.916901,Positive
+20,PatrickMcHenry,0.5669354554,Republican,"What the Democrats’ reckless tax &amp; spending bill would do: 
+❌weaponize the IRS
+❌allow taxpayer funded abortions
+❌increase taxes
+
+What this terrible bill won’t do: 
+❌secure our border
+❌address the labor shortage
+❌fix the supply chain crisis
+❌reverse skyrocketing prices",negative,Aye,Centrist,democrats reckless tax spending bill would weaponize irs allow taxpayer funded abortions increase taxes terrible bill secure border address labor shortage fix supply chain crisis reverse skyrocketing prices,-0.742999,Negative
+246,RepWalberg,0.6650608914,Republican,"Unfortunately, he is far from the only person on the terror watchlist trying to cross the border. 
+
+Grateful to Texas law enforcement for making this arrest, however, due to open border policies there’ve been 1.2 million got-aways since Biden took office.",negative,Aye,Right Centrist,unfortunately far person terror watchlist trying cross border grateful texas law enforcement making arrest however due open border policies million got aways since biden took office,-0.636899,Negative
+234,BillPascrell,0.2960607336,Democrat,"This is the right move. Refugees seeking asylum flee unfathomable poverty, starvation, and war. They replenish our land. It is time to reopen the golden door of the greatest nation on earth. 🗽
+https://t.co/H3sfvvTUUn",positive,No,Left Centrist,right move refugees seeking asylum flee unfathomable poverty starvation war replenish land time reopen golden door greatest nation earth,-0.458799,Positive
+264,RepMikeTurner,0.6942453178,Republican,"It is May 2nd which means the Biden Administration is less than 22 days away from ending Title 42 with no plan in place to secure our border. 
+
+This is a matter of national security. The Biden Administration must keep our border and our communities safe.",negative,Aye,Right Centrist,may 2nd means biden administration less 22 days away ending title 42 plan place secure border matter national security biden administration must keep border communities safe,0.778301,Negative
+0,CongMikeSimpson,0.5465186273,Republican,"This is chaos. 
+
+Make no mistake, this isn’t the fault of CBP agents but Biden’s open border policies.",negative,Aye,Centrist,chaos make mistake fault cbp agents biden open border policies,-0.831599,Negative
+118,RepCohen,0.1605127721,Democrat,"Build Back Better means:
+✅Free universal pre-k
+✅Medicaid expansion
+✅Lower prescription costs
+✅Middle class tax cuts
+✅Family leave
+✅Child care
+✅Health care
+✅Climate action
+✅Housing
+✅Immigration
+✅Home-based care for seniors and disabled people
+And so much more.",positive,No,Far Left,build back better means free universal pre medicaid expansion lower prescription costs middle class tax cuts family leave child care health care climate action housing immigration home based care seniors disabled people much,0.904201,Positive
+260,RepDonBacon,0.7714742821,Republican,This portion of wall was installed by Obama Administration at a time when border security had bipartisan support. https://t.co/hc2Qln09Cv,neutral,Aye,Right Centrist,portion wall installed obama administration time border security bipartisan support,0.624901,Negative
+268,RepBrianMast,0.7193228517,Republican,"This year, 78 individuals on the terror watchlist crossed the border (that we know about). On top of that, 12,000+ pounds of fentanyl and over 2 million migrants made their way across the southern border.
+
+And yet, Biden and Harris continue to lie and say the border is secure.",negative,Aye,Right Centrist,year 78 individuals terror watchlist crossed border know top 12 000 pounds fentanyl million migrants made way across southern border yet biden harris continue lie say border secure,-0.051599,Negative
+138,TXRandy14,0.937936374,Republican,"CBP Commissioner Chris Magnus has been snoring through the skyrocketing border crossings since he got the job. 
+
+I joined @CongressmanHice to call for his resignation immediately.",negative,No,Far Right,cbp commissioner chris magnus snoring skyrocketing border crossings since got job joined call resignation immediately,-0.295999,Negative
+255,RepClayHiggins,0.6707234596,Republican,The southern border is wide open under President Biden. We must restore law and order.,negative,Aye,Right Centrist,southern border wide open president biden must restore law order,0.296001,Positive
+70,RepYvetteClarke,0.116532277,Democrat,"We cannot be deterred from fully reversing the harmful, malicious, and discriminatory immigration restriction that is Title 42.
+https://t.co/3rMlOXFWSI",negative,No,Far Left,cannot deterred fully reversing harmful malicious discriminatory immigration restriction title 42,-0.273199,Negative
+152,RepBrianBabin,0.8719481213,Republican,".@CBP apprehended nearly 300 illegal aliens in just 18 hours. Let that sink in.
+
+The work U.S. border agents do daily is relentless, dangerous, and absolutely vital to the safety of our nation. They deserve our respect and support - ALWAYS. https://t.co/SU5Hjddovy",positive,No,Far Right,apprehended nearly 300 illegal aliens 18 hours let sink work border agents daily relentless dangerous absolutely vital safety nation deserve respect support always,0.595601,Positive
+205,RepVeasey,0.3102495687,Democrat,"This ruling is a victory for our constitution and Democracy.
+
+We are committed to defending our immigrant communities and ensuring that every person in our community is counted for the #2020Census.
+https://t.co/1OQIDVJBzZ",positive,No,Left Centrist,ruling victory constitution democracy committed defending immigrant communities ensuring every person community counted 2020census,0.493901,Positive
+111,RepAdamSmith,0.1833416984,Democrat,"I am actively working to get more information on the reports of Americans and lawful permanent residents of Iranian descent being detained by CBP, including at the Canadian-U.S. border in Washington.",positive,No,Far Left,actively working get information reports americans lawful permanent residents iranian descent detained cbp including canadian border washington,-0.102699,Neutral
+235,RepLloydDoggett,0.2859686167,Democrat,"And cruelty to deter immigrants has been the deliberate policy of this Administration. According to Trump, unless you separate children, immigrants think they’re coming to “a picnic.""",negative,No,Left Centrist,cruelty deter immigrants deliberate policy administration according trump unless separate children immigrants think coming picnic,-0.599399,Negative
+99,RepBonamici,0.195484578,Democrat,I have supported and will continue to support effective border security solutions. Once the government is officially reopened...,positive,No,Far Left,supported continue support effective border security solutions government officially reopened,0.880701,Positive
+222,RepBillFoster,0.3100631834,Democrat,I will vote to block @realDonaldTrump’s national emergency tonight. His declaration is an egregious abuse of presidential power. There is no national security emergency on our southern border and no need for a wasteful border wall. #FakeEmergency,negative,No,Left Centrist,vote block national emergency tonight declaration egregious abuse presidential power national security emergency southern border need wasteful border wall fakeemergency,-0.871999,Negative
+108,RepDannyDavis,0.1902084693,Democrat,Chisholm was the oldest of four daughters to immigrant parents from Barbados. Her motto and title of her autobiography “Unbought and Unbossed” illustrates advocating  for women and minorities during her seven terms in the U.S. House of Representatives.,positive,Aye,Far Left,chisholm oldest four daughters immigrant parents barbados motto title autobiography unbought unbossed illustrates advocating women minorities seven terms house representatives,1.00E-06,Positive
+47,MarkAmodeiNV2,0.5944763839,Republican,"I was proud to support the Secure the Border Act, legislation that offers commonsense solutions to restore sanity and security at the border. https://t.co/wTVsrOD0lR",positive,Aye,Centrist,proud support secure border act legislation offers commonsense solutions restore sanity security border,0.910001,Positive
+198,RepDonBeyer,0.2482571175,Democrat,I also deeply appreciate the ongoing efforts of the National Park Service to improve safety on G.W. Parkway’s southern stretch. Together these projects will deliver a top transportation objective for my constituents: making the historic G.W. Parkway as safe as it is scenic.,positive,No,Left Centrist,also deeply appreciate ongoing efforts national park service improve safety parkway southern stretch together projects deliver top transportation objective constituents making historic parkway safe scenic,0.908001,Positive
+274,RepBost,0.7393788396,Republican,"The next stop on my Southern IL #RuralRoundUp tour was Valmeyer for our 1st Agriculture Advisory Board meeting of 2021. We discussed topics ranging from crop insurance to trade &amp; I gave an update on my work in DC, including the BALE Act &amp; Emergency Rural Community Relief Act. https://t.co/HLiGyXi9kx",neutral,Aye,Right Centrist,next stop southern il ruralroundup tour valmeyer 1st agriculture advisory board meeting 2021 discussed topics ranging crop insurance trade gave update work dc including bale act emergency rural community relief act,-0.177899,Neutral
+30,JudgeCarter,0.5633245416,Republican,"Biden's border crisis continues to rage, and with the ending of Title 42, things are only going to get worse at the border.",negative,No,Centrist,biden border crisis continues rage ending title 42 things going get worse border,-0.895699,Negative
+171,RepRalphNorman,1,Republican,"Yesterday — this Admin reaffirmed their commitment to open border policies by forcing out the highly regarded Chief of Border Patrol. 
+
+Are they willing to remove everyone that stands for cleaning up this crisis?",negative,No,Far Right,yesterday admin reaffirmed commitment open border policies forcing highly regarded chief border patrol willing remove everyone stands cleaning crisis,-0.361199,Negative
+275,RepGusBilirakis,0.7931482337,Republican,"During this week's Health mark-up, we passed two bills to help combat the illicit fentanyl poisoning crisis:  The Halt All Lethal Trafficking of Fentanyl Act and The Securing the Border for Public Health Act. Click below to learn more. https://t.co/90PBUs0euw",positive,Aye,Right Centrist,week health mark passed two bills help combat illicit fentanyl poisoning crisis halt lethal trafficking fentanyl act securing border public health act click learn,-0.742999,Neutral
+201,RepDonaldPayne,0.2187633741,Democrat,"Instead of working constructively to address our immigration challenges, the President is making them worse. Democrats, on the other hand, want to work on a bipartisan basis to #protectDREAMers, #saveTPS, and pass #CIR. #SOTU",negative,No,Left Centrist,instead working constructively address immigration challenges president making worse democrats hand want work bipartisan basis protectdreamers savetps pass cir sotu,0.177901,Negative
+212,RepRaulRuizMD,0.3582280305,Democrat,I thank @RivCoNow for hosting today's informative briefing on the challenges the county is facing in helping asylum seekers who arrive in our community. I'm committed to working together to secure the resources we need to continue addressing this challenge in a humane manner. https://t.co/SF0gPUuHqV,positive,No,Left Centrist,thank hosting today informative briefing challenges county facing helping asylum seekers arrive community committed working together secure resources need continue addressing challenge humane manner,0.831601,Positive
+141,RepDavidRouzer,0.8192558571,Republican,"Two more individuals on the Terrorism Watch List were apprehended at our southern border.
+ 
+President Biden must take action and treat this escalating crisis for what it is: a national security threat.",negative,No,Far Right,two individuals terrorism watch list apprehended southern border president biden must take action treat escalating crisis national security threat,-0.840199,Negative
+231,RepBrianHiggins,0.2977050292,Democrat,"On 11/8 the US will welcome vaccinated travelers at the northern border w/o COVID-19 testing requirements.
+Writing to @KirstenHillmanA we urged Canada to drop redundant &amp; expensive testing that hinders travel for working families &amp; impacts our economies. https://t.co/5PG2n8O1ib https://t.co/jV0XJ1VoQ5",positive,No,Left Centrist,11 us welcome vaccinated travelers northern border covid 19 testing requirements writing urged canada drop redundant expensive testing hinders travel working families impacts economies,0.226301,Positive
+62,RepJudyChu,0.1302381902,Democrat,"For a decade, #DACA has provided Dreamers the opportunity to achieve the American Dream in the country they call home—but we must do more to fix our broken immigration system. Today, we renew our commitment to fighting for a clear and permanent pathway to citizenship. #HomeIsHere",positive,No,Far Left,decade daca provided dreamers opportunity achieve american dream country call home must fix broken immigration system today renew commitment fighting clear permanent pathway citizenship homeishere,0.526701,Positive
+83,NydiaVelazquez,0.1488053254,Democrat,"This past week, #ICEraids swept #NYC. In ""rapid response,"" I hosted a session w/ @SenatorMyrie, @NYCCouncil38, @nycmayorsoffice, @NewSanctuaryNYC &amp; others to protect our immigrant neighbors &amp; connect community leaders w/ gov. #Immigrant rights ARE #HumanRights.
+ #ICE #CBP #NY https://t.co/ge5UQPzAfK",positive,No,Far Left,past week iceraids swept nyc rapid response hosted session nycmayorsoffice newsanctuarynyc others protect immigrant neighbors connect community leaders gov immigrant rights humanrights ice cbp ny,0.381801,Neutral
+124,RepMattGaetz,0.8952876078,Republican,“America First” means protecting our border from the ‘Gulf Cartel’ before avenging foreign vessels in the Gulf of Oman. https://t.co/YsOhQr4wB8,negative,No,Far Right,america first means protecting border gulf cartel avenging foreign vessels gulf oman,1.00E-06,Neutral
+101,RepHankJohnson,0.192991533,Democrat,"Georgia is home to more than 1 million immigrants. 
+
+They work hard and make our culture more rich, diverse and innovative.
+
+This #ImmigrantHeritageMonth, we take time to celebrate the inspirational stories of immigrants and their countless contributions to our nation. https://t.co/AwK9XL8NKS",positive,No,Far Left,georgia home million immigrants work hard make culture rich diverse innovative immigrantheritagemonth take time celebrate inspirational stories immigrants countless contributions nation,0.920101,Positive
+248,RepNewhouse,0.7247384546,Republican,"""For the first time, the number of arrests of undocumented immigrants along the southwestern border exceeded two million in one year, according to newly released government data, continuing a historic pace of undocumented immigrants coming to the country."" https://t.co/AyOG9w4eQo",negative,Aye,Right Centrist,first time number arrests undocumented immigrants along southwestern border exceeded two million one year according newly released government data continuing historic pace undocumented immigrants coming country,-0.381799,Neutral
+281,RepKenBuck,0.688515108,Republican,"Here is the thing… 
+
+Under the weak leadership of Pres. Biden our southern border is an absolute disaster.",negative,No,Right Centrist,thing weak leadership pres biden southern border absolute disaster,-0.790599,Negative
+237,RepGregoryMeeks,0.2068361982,Democrat,"As Biden mentioned, our war on immigration is exhausted.  And in fact, it's misguided given that immigrants are inextricably interwoven within the fabric of this nation.",negative,No,Left Centrist,biden mentioned war immigration exhausted fact misguided given immigrants inextricably interwoven within fabric nation,-0.750599,Negative
+97,RepWilson,0.1332639381,Democrat,"Our immigrant community has shaped our nation's unique identity, making an immeasurable impact from Biscayne Bay to the California hills. I am proud stand with our immigrant rich communities every day and to celebrate their diverse heritage. #ImmigrantHeritageMonth https://t.co/1K6YHEkbMC",positive,No,Far Left,immigrant community shaped nation unique identity making immeasurable impact biscayne bay california hills proud stand immigrant rich communities every day celebrate diverse heritage immigrantheritagemonth,0.886001,Positive
+191,DorisMatsui,0.2539109751,Democrat,"Immigrants are a vital part of our Sacramento community &amp; they deserve a pathway to citizenship. #DACA recipients, TPS holders &amp; essential workers represent American resilience &amp; hope.
+
+The House passed the #DREAMAct earlier this year. Let's get it passed in the Senate.
+
+#DACADay https://t.co/WsHAF5r4zE",positive,No,Left Centrist,immigrants vital part sacramento community deserve pathway citizenship daca recipients tps holders essential workers represent american resilience amp hope house passed dreamact earlier year let us get passed senate dacaday,0.624901,Positive
+84,RepEspaillat,0.09819660286,Democrat,"Asylum seekers have been a cornerstone of American society, contributing $2 trillion to our GDP annually and keeping our nation afloat during the COVID-19 pandemic through 5 million essential service jobs.",positive,No,Far Left,asylum seekers cornerstone american society contributing trillion gdp annually keeping nation afloat covid 19 pandemic million essential service jobs,1.00E-06,Positive
+79,RepRaulGrijalva,0.1143953553,Democrat,"Trump's billion dollar disaster of a border wall has brought nothing but more militarization and environmental destruction to the places we call home in Southern Arizona. 
+
+It was unlawful from the start &amp; it's time to end construction once and for all.  https://t.co/e45MfguYbY",negative,No,Far Left,trump billion dollar disaster border wall brought nothing militarization environmental destruction places call home southern arizona unlawful start time end construction,-0.273699,Negative
+224,RepJimmyPanetta,0.3315034108,Democrat,"I voted against spending bills since they included funding for the construction of a border wall. 
+
+This administration continues to undermine our military readiness by taking national security funds to build a wall.",negative,No,Left Centrist,voted spending bills since included funding construction border wall administration continues undermine military readiness taking national security funds build wall,0.296001,Negative
+203,JoaquinCastrotx,0.2715674031,Democrat,"This is encouraging news for the inclusion of immigration legislation in the next budget reconciliation bill.
+
+Essential workers who powered our economy during COVID have more than earned a pathway to citizenship.
+
+Good work by @SenSanders. I hope the House takes similar action.",positive,No,Left Centrist,encouraging news inclusion immigration legislation next budget reconciliation bill essential workers powered economy covid earned pathway citizenship good work hope house takes similar action,0.848101,Positive
+293,RepStefanik,0.7596498462,Republican,"As the #BidenBorderCrisis continues to rage, the Biden Budget cuts spending for the Department of Homeland Security and ZEROES out funding for the border wall, security, and technology.
+
+Their disregard for law and order and lack of support for the US Border Patrol is outrageous!",negative,Aye,Right Centrist,bidenbordercrisis continues rage biden budget cuts spending department homeland security zeroes funding border wall security technology disregard law order lack support us border patrol outrageous,-0.690799,Negative
+261,KenCalvert,0.6702493895,Republican,Must read op-ed from @DanCrenshawTX: The Silly Arguments Against a Border Wall https://t.co/B0nB5SUL9Q,neutral,Aye,Right Centrist,must read op ed silly arguments border wall,-0.381799,Neutral
+229,RepSchneider,0.3487495321,Democrat,"We need to move together to tackle the challenges before us – creating opportunity for working families to get ahead, improving the quality and lowering the cost of health care, reducing gun violence, reforming our immigration system, addressing global climate change and more",positive,No,Left Centrist,need move together tackle challenges us creating opportunity working families get ahead improving quality lowering cost health care reducing gun violence reforming immigration system addressing global climate change,0.421501,Positive
+31,RepCuellar,0.5718157822,Democrat,"On Citizenship Day, we are reminded that America is a nation of immigrants. They have built our cities, invigorated our communities and enriched our country.
+
+Becoming a citizen cements that legacy by granting new Americans the same rights as every American.",negative,No,Centrist,citizenship day reminded america nation immigrants built cities invigorated communities enriched country becoming citizen cements legacy granting new americans rights every american,0.476701,Positive
+214,RepDwightEvans,0.219690576,Democrat,"No mention of America’s 40,000 gun deaths per year. 
+ 
+Only talk of a few isolated incidents involving unauthorized immigrants.
+ 
+Universal background checks would save many lives.
+ 
+The Senate should pass #HR8! 
+ 
+#SOTU",negative,No,Left Centrist,mention america 40 000 gun deaths per year talk isolated incidents involving unauthorized immigrants universal background checks would save many lives senate pass hr8 sotu,-0.127999,Negative
+180,RepBrownley,0.2640151277,Democrat,"Recently, my office was able to assist Katya, a Ukrainian dancer who was seeking to join her dance partner and fiancé, Nikolas, in Moorpark. Katya was being held at the border without access to a lawyer while attempting to seek refuge in the United States. https://t.co/ZUhs9RqYES",neutral,No,Left Centrist,recently office able assist katya ukrainian dancer seeking join dance partner fiancé nikolas moorpark katya held border without access lawyer attempting seek refuge united states,0.612401,Neutral
+13,RepJimCosta,0.4231979683,Democrat,"Today is DACA’s 9th anniversary. Immigrant youth won #DACA and defended the program successfully from repeated attacks, but it has never been enough. We must deliver citizenship for millions of young people, TPS holders and essential workers. https://t.co/aHvmDLjuwP",positive,No,Centrist,today daca 9th anniversary immigrant youth daca defended program successfully repeated attacks never enough must deliver citizenship millions young people tps holders essential workers,0.077201,Positive
+88,RepJayapal,0.07465123605,Democrat,"Julie Su is pro-union, a champion for workers across America, and has spent her career fighting tirelessly for low-wage and immigrant workers. I’m thrilled to see her nomination advance!",positive,No,Far Left,julie su pro union champion workers across america spent career fighting tirelessly low wage immigrant workers thrilled see nomination advance,0.493901,Positive
+107,RepGwenMoore,0.1261183361,Democrat,"Horrifying. Nearly 5,500 children have been separated from their families. Trump's immigration policies are designed to stir fear &amp; inflict trauma. And innocent children are bearing the brunt of this administration's cruelty and inhumanity. https://t.co/joVrNAbPdf",negative,No,Far Left,horrifying nearly 500 children separated families trump immigration policies designed stir fear inflict trauma innocent children bearing brunt administration cruelty inhumanity,-0.904199,Negative
+279,MarioDB,0.6418851831,Republican,"My amendment not only gets us closer to reopening our government, but also protects our national security, addresses vulnerable immigrant communities who seek legal status, and helps those who are rebuilding after Hurricane Michael.",positive,Aye,Right Centrist,amendment gets us closer reopening government also protects national security addresses vulnerable immigrant communities seek legal status helps rebuilding hurricane michael,0.709601,Positive
+213,RepLouCorrea,0.3414691735,Democrat,If only we took this many floor votes on immigration reform.,negative,No,Left Centrist,took many floor votes immigration reform,1.00E-06,Negative
+17,RepHalRogers,0.5439176952,Republican,I was honored to join President Trump in the Oval Office today for a ceremonial signing of a bill that designates southern Kentucky’s historic Mill Springs Battlefield as a National… https://t.co/4usGrL0R2O,neutral,Aye,Centrist,honored join president trump oval office today ceremonial signing bill designates southern kentucky historic mill springs battlefield national,0.526701,Positive
+252,RepMcCaul,0.660648541,Republican,"Proud to stand with my colleagues in unveiling our border plan today — written by Texans for Texas. 
+
+While the Biden admin is turning a blind eye to the crisis, Texas Republicans will work to secure the border and keep Americans safe! https://t.co/HI9ZfgIjtQAC",neutral,Aye,Right Centrist,proud stand colleagues unveiling border plan today written texans texas biden admin turning blind eye crisis texas republicans work secure border keep americans safe,0.153101,Positive
+15,RepKayGranger,0.5597368137,Republican,"Today, we commemorate the 14th anniversary of Customs and Border Protection’s Air and Marine Operations @CBPAMO. This arm of @CBP is often the first line of border defense, spotting threats from air and sea and relaying information to ground agents. https://t.co/fwZHjrRGAE",positive,No,Centrist,today commemorate 14th anniversary customs border protection air marine operations arm often first line border defense spotting threats air sea relaying information ground agents,-0.318199,Neutral
+276,RepAndyBiggsAZ,0.7952289535,Republican,COMING UP: I'm joining @JonScottFNC on @AmericaNewsroom to discuss the latest on the Democrats' partisan impeachment plot + how Dems continue their efforts to block @POTUS @realDonaldTrump's attempts to solve the humanitarian crisis at the border. Watch @FoxNews at 9:10 EST.,negative,No,Right Centrist,coming joining discuss latest democrats partisan impeachment plot dems continue efforts block potus realdonaldtrump attempts solve humanitarian crisis border watch foxnews 10 est,-0.735099,Neutral
+210,CongressmanRaja,0.3365694259,Democrat,"I applaud the Biden Administration for taking this long overdue step. It is time we treat asylum seekers with respect and compassion. 
+https://t.co/x4Sb7M2gXt",positive,No,Left Centrist,applaud biden administration taking long overdue step time treat asylum seekers respect compassion,0.895701,Positive
+188,RepDarrenSoto,0.2797434304,Democrat,"US Sup Ct keeps American Dream alive by upholding #DACA, saving millions of #Dreamers from deportation! From the beginning, Pres Trump failed to justify the termination, just saying the program was unconstitutional. Well clearly it is lawful. So overjoyed! https://t.co/CEoF68HJ8oAC",positive,No,Left Centrist,us sup ct keeps american dream alive upholding daca saving millions dreamers deportation beginning pres trump failed justify termination saying program unconstitutional well clearly lawful overjoyed,0.831601,Negative
+267,RepDaveJoyce,0.6632843544,Republican,"Americans should feel hopeful and confident in the direction of our country.
+
+But over the past two years, all they’ve seen is crippling inflation, higher illegal border crossings, less savings, more crime, and out of control gas prices.",negative,Aye,Right Centrist,americans feel hopeful confident direction country past two years seen crippling inflation higher illegal border crossings less savings crime control gas prices,-0.082799,Negative
+202,RepCarbajal,0.3166009241,Democrat,"I came to this country when I was five years old, when our country's immigration system worked.
+
+As the @NewDemCoalition's new Vice Chair of the Immigration and Border Security Task Force, I am committed to advancing the policies that will fix our broken immigration system. https://t.co/mssHDYARWW",positive,No,Left Centrist,came country five years old country immigration system worked new vice chair immigration border security task force committed advancing policies fix broken immigration system,0.102701,Positive
+290,RepArrington,0.7072697458,Republican,"Biden’s open-border policies are devastating communities, hamstringing law enforcement, and allowing a record volume of drugs into our country.
+
+Americans should be outraged. https://t.co/cBQ3FWiFiF",negative,No,Right Centrist,biden open border policies devastating communities hamstringing law enforcement allowing record volume drugs country americans outraged,-0.831599,Negative
+270,RepAndyBarr,0.7670906849,Republican,".@HouseGOP just delivered the Secure the Border Act for the American people. This bill will: 
+
+✅Resume border wall construction
+✅End catch &amp; release
+✅Provide Title 42-like authority
+✅Bolster Border Patrol staffing",positive,Aye,Right Centrist,delivered secure border act american people bill resume border wall construction end catch release provide title 42 like authority bolster border patrol staffing,0.636901,Positive
+284,RepRutherfordFL,0.7849179197,Republican,"There are terrorists coming across our southern border. The cages where the Biden Administration keeps unaccompanied minors are at a 729% capacity. Business is booming for cartels. 
+
+Where is the president? 
+https://t.co/QvRj8ZQg1o",negative,Aye,Right Centrist,terrorists coming across southern border cages biden administration keeps unaccompanied minors 729 capacity business booming cartels president,-0.624899,Negative
+292,TomColeOK04,0.780560263,Republican,"Chaos is the one word that accurately describes the current situation at the southern border. However, last week @HouseGOP advanced legislation to restore order &amp; alleviate this national security &amp; humanitarian crisis of unprecedented proportions.
+
+More ⬇
+https://t.co/d8BmGGKomz",negative,Aye,Right Centrist,chaos one word accurately describes current situation southern border however last week advanced legislation restore order alleviate national security humanitarian crisis unprecedented proportions,-0.493899,Negative
+78,RepAndreCarson,0.1187214733,Democrat,"I just voted to terminate President Trump's Border Emergency. 
+
+This #FakeEmergency is nothing but a scheme to build his ineffective wall by diverting money from important military projects. It's not only xenophobic, it's fiscally irresponsible and an insult to our troops.",negative,No,Far Left,voted terminate president trump border emergency fakeemergency nothing scheme build ineffective wall diverting money important military projects xenophobic fiscally irresponsible insult troops,-0.766999,Negative
+56,SteveScalise,0.5947235485,Republican,"Good. But this is just part of what needs to be done.
+
+The Biden Admin works tirelessly to undermine our national security &amp; open our border to illegals &amp; drugs like fentanyl.
+
+It must end.
+
+The GOP House Majority will pass bills to secure our border &amp; hold Biden accountable.",negative,Aye,Centrist,good part needs done biden admin works tirelessly undermine national security open border illegals drugs like fentanyl must end gop house majority pass bills secure border amp hold biden accountable,0.790601,Negative
+93,RepJerryNadler,0.1532590364,Democrat,"Instead of offering support and protection to vulnerable children, the GOP border bill proposes to throw them into jail-like detention. It's a harsh, inhumane approach, and that’s why I’m voting NO on the Child Detention Act. https://t.co/7fOLVGiRFo",negative,No,Far Left,instead offering support protection vulnerable children gop border bill proposes throw jail like detention harsh inhumane approach voting child detention act,-0.557399,Negative
+227,RepBera,0.3828118911,Democrat,@realDonaldTrump @RepZoeLofgren I'm glad to see the announcement that the House will soon vote on the #NoBanAct. This bill will overturn the President's #MuslimBan and prohibit future religious discrimination in our immigration system. https://t.co/ZUghi9CDiw,positive,No,Left Centrist,glad see announcement house soon vote nobanact bill overturn president muslimban prohibit future religious discrimination immigration system,0.458801,Positive
+103,RepMcGovern,0.146091017,Democrat,"Under current U.S. law, it's legal for migrants arriving at a U.S. port of entry to seek asylum &amp; undergo a professional screening interview. It's legal for migrants entering between ports of entry to surrender to authorities, ask for asylum &amp; face a screening interview.",neutral,No,Far Left,current law legal migrants arriving port entry seek asylum undergo professional screening interview legal migrants entering ports entry surrender authorities ask asylum face screening interview,0.250001,Neutral
+242,RepJoeWilson,0.7483905401,Republican,"Following President Biden’s weak remarks today re: Russia’s aggressive posture at Ukraine’s border, I’m grateful to co-lead with colleagues from @RepublicanStudy on the Putin Accountability Act. 
+
+https://t.co/n2D5nEqvMK",negative,Aye,Right Centrist,following president biden weak remarks today russia aggressive posture ukraine border grateful co lead colleagues putin accountability act,-0.127999,Negative
+208,FrankPallone,0.2248076924,Democrat,"By instituting a “wealth test” on immigrant families, the Trump Admin is giving an ultimatum: Either go hungry or leave. 
+ 
+It's heartless and unnecessary.
+ 
+President-elect Biden will roll back the “public charge rule” and restore decency to our nation’s immigration system.",negative,No,Left Centrist,instituting wealth test immigrant families trump admin giving ultimatum either go hungry leave heartless unnecessary president elect biden roll back public charge rule restore decency nation immigration system,0.526701,Negative
+114,RepMarkPocan,0.1744591609,Democrat,"The power of the people is stronger than the hate of this President. 
+
+But immigrants should not have had to live in fear as this administration decided whether to implement their cruelty or not.
+
+Protect all immigrants.",negative,No,Far Left,power people stronger hate president immigrants live fear administration decided whether implement cruelty protect immigrants,-0.764999,Negative
+220,RepHuffman,0.205344485,Democrat,"CA law lets state &amp; local law enforcement build relationships w/ immigrant communities, without being turned into federal immigration enforcement. Good for  #SCOTUS for refusing to hear Trump’s ridiculous appeal that would stomp on states’ rights and make us less safe.",positive,No,Left Centrist,ca law let us state local law enforcement build relationships immigrant communities without turned federal immigration enforcement good scotus refusing hear trump ridiculous appeal would stomp states rights make us less safe,0.079001,Negative
+272,RepAnnWagner,0.7652186804,Republican,"The # of unaccompanied children crossing the border have surged &amp; yet the Biden Administration will not even acknowledge the obvious fact that a crisis exists. Too many children are experiencing overcrowded facilities &amp; have gone days without showers.
+
+https://t.co/rhG5kJZXr5",negative,Aye,Right Centrist,unaccompanied children crossing border surged yet biden administration even acknowledge obvious fact crisis exists many children experiencing overcrowded facilities gone days without showers,-0.624899,Negative
+254,RepBillJohnson,0.7372443829,Republican,"America needs more border agents, police officers, and military service members defending and securing our nation — not 87,000 more IRS agents hassling families who are already struggling with runaway inflation. This is a step in the right direction for the American people.",positive,Aye,Right Centrist,america needs border agents police officers military service members defending securing nation 87 000 irs agents hassling families already struggling runaway inflation step right direction american people,-0.127999,Positive
+185,RepSarbanes,0.2427092712,Democrat,America has a rich history of welcoming immigrants – like my grandparents from Greece. Immigrants enrich our communities and their hard work helps our nation prosper.,positive,No,Left Centrist,america rich history welcoming immigrants like grandparents greece immigrants enrich communities hard work helps nation prosper,0.880701,Positive
+233,RepRobinKelly,0.2640667101,Democrat,"Join my team TOMORROW for a virtual immigration information session with a representative from @USCIS  to explain the process for applying for a green card, becoming a U.S. citizen, and more!
+
+RSVP here:  https://t.co/23Jzu17ZYt https://t.co/t0E3QnZyMH",neutral,No,Left Centrist,join team tomorrow virtual immigration information session representative explain process applying green card becoming citizen rsvp,0.296001,Neutral
+217,RepAdams,0.2214196739,Democrat,"Trump’s administration of the census undercounts the homeless, immigrant communities, people of color, and many others. Our president seems to think the only demographic that counts are the wealthy boat owners, and he ignores the folks who make up the fabric of our community.",negative,No,Left Centrist,trump administration census undercounts homeless immigrant communities people color many others president seems think demographic counts wealthy boat owners ignores folks make fabric community,0.102701,Negative
+179,RepAlexMooney,0.9233626163,Republican,This is not the time to be limiting tools that help secure the border. We need policies that strengthen our ability to safeguard against illegal immigration.,negative,No,Far Right,time limiting tools help secure border need policies strengthen ability safeguard illegal immigration,0.771701,Neutral
+240,RepFrenchHill,0.6797389285,Republican,"This certainly does not suggest ""operational control"" at our southwest border as @DHSgov Sec. Mayorkas previously claimed.",neutral,Aye,Right Centrist,certainly suggest operational control southwest border sec mayorkas previously claimed,0.340001,Negative
+184,RepJuanVargas,0.2366777061,Democrat,President Trump wants to discriminate against immigrant populations by denying green cards based on who they believe might need public assistance in the future as part of his #WarOnWorkingFamilies. https://t.co/5AWze9k7VH,negative,No,Left Centrist,president trump wants discriminate immigrant populations denying green cards based believe might need public assistance future part waronworkingfamilies,-0.339999,Negative
+194,BettyMcCollum04,0.2191424405,Democrat,"I’m glad to hear that all are safe and accounted for, and grateful for the St. Louis County Rescue Squad, Minnesota State Patrol, U.S. Border Patrol, and the many others who helped bring this group to safety! https://t.co/Eovg5yqJks",positive,No,Left Centrist,glad hear safe accounted grateful st louis county rescue squad minnesota state patrol border patrol many others helped bring group safety,0.932501,Positive
+39,RepThomasMassie,0.5233292164,Republican,"201 democrats (list below) voted for a COVID vaccine mandate on legal international visitors yesterday.
+
+We are now the only country in the free world that has this xenophobic policy.
+
+Their mandate doesn’t apply to illegal immigrants who are apprehended and released into the US. https://t.co/oAMqHAaI4x",negative,No,Centrist,201 democrats list voted covid vaccine mandate legal international visitors yesterday country free world xenophobic policy mandate apply illegal immigrants apprehended released us,0.051601,Negative
+286,RepLarryBucshon,0.6989004623,Republican,"The facts show drugs are pouring across the border, our national security is at risk and there is a humanitarian crisis. I urge Democrats in the House to come together with Republicans in both chambers to pass a bill President Trump will sign.",negative,Aye,Right Centrist,facts show drugs pouring across border national security risk humanitarian crisis urge democrats house come together republicans chambers pass bill president trump sign,-0.585899,Negative
+295,RepLoudermilk,0.7182649547,Republican,".@POTUS and @GOP have offered compromise, but the other side needs to be willing to negotiate on issues such as immigration reform. #SOTU",negative,No,Right Centrist,offered compromise side needs willing negotiate issues immigration reform sotu,1.00E-06,Negative
+144,RepGosar,0.9205818904,Republican,"Proud to cosponsor.
+
+America is under a sustained invasion on our southern border - it's time to fight back.a",neutral,No,Far Right,proud cosponsor america sustained invasion southern border time fight back,0.128001,Positive
+215,SpeakerPelosi,0.3606229275,Democrat,"American families have suffered under the #TrumpShutdown for more than a month. Instead of continuing to be complicit by voting for Trump’s unacceptable border &amp; immigration policies, the @SenateGOP must stop holding America hostage, &amp; re-open government. https://t.co/kRKlpfh6nC",negative,No,Left Centrist,american families suffered trumpshutdown month instead continuing complicit voting trump unacceptable border immigration policies must stop holding america hostage open government,-0.812599,Negative
