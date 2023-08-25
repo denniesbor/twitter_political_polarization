@@ -31,19 +31,13 @@ plot3 <- ggplot(data, aes(x = ideology_cluster, y = vader, fill = vote)) +
   labs(title = "VADER sentiment scores per ideological group and vote", x = "Ideology Cluster", y = "VADER Sentiment")
 
 # Plot a table matrix of the bert sentiment against manually annotated sentiment
-# Create a cross-tabulation table
-cross_tab <- table(data$bert_sentiment, data$sentiment)
+sentiment_counts <- data %>%
+  group_by(bert_sentiment, sentiment) %>%
+  tally()
 
-# Convert the table to a data frame for plotting
-cross_tab_df <- as.data.frame.matrix(cross_tab)
-cross_tab_df$bert_sentiment <- rownames(cross_tab_df)
-
-# Convert the data frame to long format for plotting
-cross_tab_long <- gather(cross_tab_df, key = "sentiment", value = "count", -bert_sentiment)
-
-# Create the bar plot
-plot4 = ggplot(cross_tab_long, aes(x = bert_sentiment, y = count, fill = sentiment)) +
-  geom_bar(stat = "identity", position = "dodge") +
-  labs(title = "Cross-Tabulation of Bert Sentiment vs. Manually Annotated Sentiment",
-       x = "Bert Sentiment", y = "Count") +
-  scale_fill_discrete(name = "Manual Sentiment")
+# Create the stacked bar plot
+plot4 <- ggplot(sentiment_counts, aes(x = bert_sentiment, y = n, fill = sentiment)) +
+  geom_bar(stat = "identity") +
+  labs(title = "comparison of sentiment categories",
+       x = "BERT Sentiment", y = "Count") +
+  scale_fill_discrete(name = "Sentiment")
