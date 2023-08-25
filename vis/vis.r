@@ -25,11 +25,15 @@ data$ideology_cluster <- factor(
   )
 )
 
-data$vote <- factor(data$vote,
-                    levels = c("Aye",
-                               "No"),
-                    labels = c("Anti-immigration \n(H.R.6136)",
-                               "Pro-immigration \n(H.R.6136)"))
+data$vote <- factor(
+  data$vote,
+  levels = c("Aye",
+             "No"),
+  labels = c(
+    "Anti-immigration \n(H.R.6136)",
+    "Pro-immigration \n(H.R.6136)"
+  )
+)
 
 data$sentiment <- factor(
   data$sentiment,
@@ -64,8 +68,49 @@ plot2 <-
   geom_point(size = 3) +
   labs(title = "(B) VADER sentiment vs. ideology scores with hue and shape by vote",
        x = "Ideology Scores", y = "VADER Sentiment") +
-  scale_color_discrete(name = "Ideology Cluster") +
-  scale_shape_manual(name = "Vote", values = c("Anti-immigration \n(H.R.6136)" = 16, "Pro-immigration \n(H.R.6136)" = 17))
+  scale_colour_manual(
+    name = "Ideology and \nImmigration stance",
+    labels = c(
+      "Far Left, Ant",
+      "Far Left, Pro",
+      "Left Centrist, Anti",
+      "Left Centrist, Pro",
+      "Centrist, Anti",
+      "Centrist, Pro",
+      "Right Centrist, Anti",
+      "Right Centrist, Pro",
+      "Far Right, Anti",
+      "Far Right, Pro"
+    ),
+    values = c(
+      "blue",
+      "red",
+      "blue",
+      "red",
+      "blue",
+      "red",
+      "blue",
+      "red",
+      "blue",
+      "red"
+    )
+  ) +
+  scale_shape_manual(
+    name = "Ideology and \nImmigration stance",
+    labels = c(
+      "Far Left, Ant",
+      "Far Left, Pro",
+      "Left Centrist, Anti",
+      "Left Centrist, Pro",
+      "Centrist, Anti",
+      "Centrist, Pro",
+      "Right Centrist, Anti",
+      "Right Centrist, Pro",
+      "Far Right, Anti",
+      "Far Right, Pro"
+    ),
+    values = c(19, 17)
+  )
 
 # Box plot of sentiment by ideology_cluster
 plot3 <-
@@ -112,4 +157,4 @@ ggsave(path_out,
        width = 12,
        height = 8)
 
-plot(arranged_plots)
+plot(plot2)
