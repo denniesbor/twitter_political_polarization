@@ -28,8 +28,8 @@ data$ideology_cluster <- factor(
 data$vote <- factor(data$vote,
                     levels = c("Aye",
                                "No"),
-                    labels = c("Pro-immigration \n(H.R.6136)",
-                               "Anti-immigration \n(H.R.6136)"))
+                    labels = c("Anti-immigration \n(H.R.6136)",
+                               "Pro-immigration \n(H.R.6136)"))
 
 data$sentiment <- factor(
   data$sentiment,
