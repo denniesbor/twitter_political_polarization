@@ -1,6 +1,8 @@
 library(tidyverse)
 library(readr)
 library(tidyr)
+# install.packages("ggpubr")
+library(ggpubr)
 
 
 # read the files
@@ -15,7 +17,8 @@ data$ideology_cluster <- factor(data$ideology_cluster, levels = c("far left", "l
 plot1 <- ggplot(data, aes(x = ideology_cluster, fill = sentiment)) +
   geom_bar(position = "dodge") +
   labs(title = "Sentiment distribution by ideology cluster", x = "Ideology Cluster", y = "Count") +
-  scale_fill_manual(values = c("negative" = "red", "positive" = "green", "neutral" = "blue"))+
+  scale_fill_manual(values = c("negative" = "red", "positive" = "green", "neutral" = "blue")) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
   facet_grid(cols=vars(vote))
 
 plot2 <- ggplot(data, aes(x = ideology, y = vader, color = ideology_cluster, shape = vote)) +
@@ -38,6 +41,23 @@ sentiment_counts <- data %>%
 # Create the stacked bar plot
 plot4 <- ggplot(sentiment_counts, aes(x = bert_sentiment, y = n, fill = sentiment)) +
   geom_bar(stat = "identity") +
-  labs(title = "comparison of sentiment categories",
+  labs(title = "Comparison of sentiment categories \n (bert vs manually annotated sent)",
        x = "BERT Sentiment", y = "Count") +
   scale_fill_discrete(name = "Sentiment")
+
+# change the font-size title in all the plots
+change_title_font_size <- function(plot, size) {
+  plot + theme(plot.title = element_text(size = size))+
+    theme(plot.title = element_text(hjust = 0.5))
+}
+
+# Change title font size for each plot
+plot1 <- change_title_font_size(plot1, size = 10)
+plot2 <- change_title_font_size(plot2, size = 10)
+plot3 <- change_title_font_size(plot3, size = 10)
+plot4 <- change_title_font_size(plot4, size = 10)
+
+arranged_plots <- ggarrange(plot1, plot2, plot3, plot4, ncol = 2, nrow = 2)
+
+# Display the arranged plots
+ggsave("viz/facet_plots.png", arranged_plots, width = 12, height = 8)
