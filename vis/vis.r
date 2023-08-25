@@ -28,8 +28,8 @@ data$ideology_cluster <- factor(
 data$vote <- factor(data$vote,
                     levels = c("Aye",
                                "No"),
-                    labels = c("Yes",
-                               "No"))
+                    labels = c("Pro-immigration \n(H.R.6136)",
+                               "Anti-immigration \n(H.R.6136)"))
 
 data$sentiment <- factor(
   data$sentiment,
@@ -65,7 +65,7 @@ plot2 <-
   labs(title = "(B) VADER sentiment vs. ideology scores with hue and shape by vote",
        x = "Ideology Scores", y = "VADER Sentiment") +
   scale_color_discrete(name = "Ideology Cluster") +
-  scale_shape_manual(name = "Vote", values = c("No" = 16, "Yes" = 17))
+  scale_shape_manual(name = "Vote", values = c("Anti-immigration \n(H.R.6136)" = 16, "Pro-immigration \n(H.R.6136)" = 17))
 
 # Box plot of sentiment by ideology_cluster
 plot3 <-
@@ -89,8 +89,7 @@ plot4 <-
 
 # change the font-size title in all the plots
 change_title_font_size <- function(plot, size) {
-  plot + theme(plot.title = element_text(size = size)) +
-    theme(plot.title = element_text(hjust = 0.5))
+  plot + theme(plot.title = element_text(size = size))
 }
 
 # Change title font size for each plot
