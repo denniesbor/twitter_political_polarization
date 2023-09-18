@@ -100,9 +100,17 @@ scale_map <- data.frame(
   shape = c(15, 16, 17, 18, 19)
 )
 
+# Create the color and shape map with actual color codes
+scale_map <- list(color = c("Far Left" = "#2166ac", 
+                            "Left Centrist" = "#4393c3", 
+                            "Centrist" = "#fddbc7", 
+                            "Right Centrist" = "#d6604d", 
+                            "Far Right" = "#b2182b"),
+                  name = c("Far Left", "Left Centrist", "Centrist", "Right Centrist", "Far Right"),
+                  shape = c(16, 17, 18, 19, 20))
 
-# Ideology vs other features plot
-# Plot 1: Ideology Score vs. Education (%)
+# Ideology vs Other Features Plot
+# Plot 1: Ideology Score vs. Education
 plot1 <- ggplot(
   data,
   aes(
@@ -113,18 +121,19 @@ plot1 <- ggplot(
   )
 ) +
   geom_point(size = 2) +
-  labs(title = "(A) High school education (%) for\n adults (25+) against political ideology",
-       x = "Ideology score", y = "Education (%)") +
+  labs(title = "(A) High School Education for\nAdults (25+) Against\nPolitical Ideology",
+       x = "Ideology Score", y = "Education (%)") +
+  scale_x_continuous(expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
   scale_color_manual(values = scale_map$color,
                      labels = scale_map$name,
-                     name = "Ideology group") +
+                     name = "Ideology Group") +
   scale_shape_manual(values = scale_map$shape,
                      labels = scale_map$name,
-                     name = "Ideology group") +
-  theme(axis.title.x = element_blank())  # Remove x-axis label
-
+                     name = "Ideology Group")
 print(plot1)
 
+# Plot 2: Ideology Score vs. Median Income
 plot2 <- ggplot(
   data,
   aes(
@@ -135,16 +144,16 @@ plot2 <- ggplot(
   )
 ) +
   geom_point(size = 2) +
-  labs(title = "(B) Median income ($) \n vs. political ideology",
-       x = "Ideology score", y = "Median income ($)") +
+  labs(title = "(B) Median Income \nvs. Political Ideology",
+       x = "Ideology Score", y = "Median Income ($)") +
+  scale_x_continuous(expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
   scale_color_manual(values = scale_map$color,
                      labels = scale_map$name,
-                     name = "Ideology group") +
+                     name = "Ideology Group") +
   scale_shape_manual(values = scale_map$shape,
                      labels = scale_map$name,
-                     name = "Ideology group") +
-  theme(axis.title.x = element_blank())  # Remove x-axis label
-
+                     name = "Ideology Group")
 
 # Plot 3: Ideology Score vs. White Population Percentage
 plot3 <- ggplot(
@@ -157,18 +166,18 @@ plot3 <- ggplot(
   )
 ) +
   geom_point(size = 2) +
-  labs(title = "(C) White population (%) \n vs. political ideology",
-       x = "Ideology score", y = "White population (%)") +
+  labs(title = "(C) White Population \nvs. Political Ideology",
+       x = "Ideology Score", y = "White Population (%)") +
+  scale_x_continuous(expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
   scale_color_manual(values = scale_map$color,
                      labels = scale_map$name,
-                     name = "Ideology group") +
+                     name = "Ideology Group") +
   scale_shape_manual(values = scale_map$shape,
                      labels = scale_map$name,
-                     name = "Ideology group") +
-  theme(axis.title.x = element_blank())  # Remove x-axis label
+                     name = "Ideology Group")
 
-
-# Plot 4: Ideology Score vs. Urban population (%)
+# Plot 4: Ideology Score vs. Urban Population Ratio
 plot4 <- ggplot(
   data,
   aes(
@@ -179,14 +188,16 @@ plot4 <- ggplot(
   )
 ) +
   geom_point(size = 2) +
-  labs(title = "(D) Urban-rural pop ratio \n vs. ideology",
-       x = "Ideology score", y = "Urban population (%)") +
+  labs(title = "(D) Urban-Rural Population Ratio \nvs. Ideology",
+       x = "Ideology Score", y = "Urban Population Ratio (%)") +
+  scale_x_continuous(expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
   scale_color_manual(values = scale_map$color,
                      labels = scale_map$name,
-                     name = "Ideology group") +
+                     name = "Ideology Group") +
   scale_shape_manual(values = scale_map$shape,
                      labels = scale_map$name,
-                     name = "Ideology group")
+                     name = "Ideology Group")
 
 # Plot 5: Ideology Score vs. Households without Internet
 plot5 <- ggplot(
@@ -199,15 +210,16 @@ plot5 <- ggplot(
   )
 ) +
   geom_point(size = 2) +
-  labs(title = "(E) Households without internet (%) \n vs. ideology",
-       x = "Ideology score", y = "Households without internet (%)") +
+  labs(title = "(E) Households Without Internet \nvs. Ideology",
+       x = "Ideology Score", y = "Households Without Internet (%)") +
+  scale_x_continuous(expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
   scale_color_manual(values = scale_map$color,
                      labels = scale_map$name,
-                     name = "Ideology group") +
+                     name = "Ideology Group") +
   scale_shape_manual(values = scale_map$shape,
                      labels = scale_map$name,
-                     name = "Ideology group")
-
+                     name = "Ideology Group")
 
 # Plot 6: Ideology Score vs. Avg Internet Download Speed
 plot6 <- ggplot(
@@ -220,15 +232,16 @@ plot6 <- ggplot(
   )
 ) +
   geom_point(size = 2) +
-  labs(title = "(F) Internet download speed (avg)\n vs. ideology",
-       x = "Ideology score", y = "Avg internet download speed (Mbps)") +
+  labs(title = "(F) Internet Download Speed \nvs. Ideology",
+       x = "Ideology Score", y = "Avg Internet Download Speed (Mbps)") +
+  scale_x_continuous(expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
   scale_color_manual(values = scale_map$color,
                      labels = scale_map$name,
-                     name = "Ideology group") +
+                     name = "Ideology Group") +
   scale_shape_manual(values = scale_map$shape,
                      labels = scale_map$name,
-                     name = "Ideology group")
-
+                     name = "Ideology Group")
 
 arranged_plots_ideology <-
   ggarrange(
@@ -256,7 +269,7 @@ ggsave(path_out,
        width = 12,
        height = 8)
 
-# Second panel plot of download speed bs
+# Second panel plot of download speed vs other features
 # Plot 1: Download Speed vs. Education (%)
 plot1 <- ggplot(
   data,
@@ -269,17 +282,16 @@ plot1 <- ggplot(
   )
 ) +
   geom_point(size = 2) +
-  labs(title = "(A) Education (%) for adults (25+) \nvs. Broadband download speed",
+  labs(title = "(A) Education for Adults 25+ \nvs. Broadband Download Speed",
        x = "Download Speed (Mbps)", y = "Education (%)") +
+  scale_x_continuous(expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
   scale_color_manual(values = scale_map$color,
                      labels = scale_map$name,
-                     name = "Ideology group") +
+                     name = "Ideology Group") +
   scale_shape_manual(values = scale_map$shape,
                      labels = scale_map$name,
-                     name = "Ideology group") +
-  theme(axis.title.x = element_blank())  # Remove x-axis label
-
-print(plot1)
+                     name = "Ideology Group")
 
 # Plot 2: Download Speed vs. Median Income
 plot2 <- ggplot(
@@ -293,15 +305,16 @@ plot2 <- ggplot(
   )
 ) +
   geom_point(size = 2) +
-  labs(title = "(B) Median income ($) vs.\n Broadband download speed",
+  labs(title = "(B) Median Income \nvs. Broadband Download Speed",
        x = "Download Speed (Mbps)", y = "Median Income ($)") +
+  scale_x_continuous(expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
   scale_color_manual(values = scale_map$color,
                      labels = scale_map$name,
-                     name = "Ideology group") +
+                     name = "Ideology Group") +
   scale_shape_manual(values = scale_map$shape,
                      labels = scale_map$name,
-                     name = "Ideology group") +
-  theme(axis.title.x = element_blank())  # Remove x-axis label
+                     name = "Ideology Group")
 
 # Plot 3: Download Speed vs. White Population Percentage
 plot3 <- ggplot(
@@ -315,17 +328,18 @@ plot3 <- ggplot(
   )
 ) +
   geom_point(size = 2) +
-  labs(title = "(C) White population (%) vs.\n Broadband download speed",
+  labs(title = "(C) White Population \nvs. Broadband Download Speed",
        x = "Download Speed (Mbps)", y = "White Population (%)") +
+  scale_x_continuous(expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
   scale_color_manual(values = scale_map$color,
                      labels = scale_map$name,
-                     name = "Ideology group") +
+                     name = "Ideology Group") +
   scale_shape_manual(values = scale_map$shape,
                      labels = scale_map$name,
-                     name = "Ideology group") +
-  theme(axis.title.x = element_blank())  # Remove x-axis label
+                     name = "Ideology Group")
 
-# Plot 4: Download Speed vs. Urban population (%)
+# Plot 4: Download Speed vs. Urban Population (%)
 plot4 <- ggplot(
   data,
   aes(
@@ -337,14 +351,16 @@ plot4 <- ggplot(
   )
 ) +
   geom_point(size = 2) +
-  labs(title = "(D) Urban-rural pop ratio \n vs. Broadband download speed",
-       x = "Download Speed (Mbps)", y = "Urban population (%)") +
+  labs(title = "(D) Urban-Rural Pop Ratio \nvs. Broadband Download Speed",
+       x = "Download Speed (Mbps)", y = "Urban Population (%)") +
+  scale_x_continuous(expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
   scale_color_manual(values = scale_map$color,
                      labels = scale_map$name,
-                     name = "Ideology group") +
+                     name = "Ideology Group") +
   scale_shape_manual(values = scale_map$shape,
                      labels = scale_map$name,
-                     name = "Ideology group")
+                     name = "Ideology Group")
 
 # Plot 5: Download Speed vs. Households without Internet
 plot5 <- ggplot(
@@ -358,15 +374,18 @@ plot5 <- ggplot(
   )
 ) +
   geom_point(size = 2) +
-  labs(title = "(E) Households w/o internet \n vs. download speed",
-       x = "Download Speed (Mbps)", y = "Households without Internet (%)") +
+  labs(title = "(E) Households without Internet \nvs. Download Speed",
+       x = "Download Speed (Mbps)", y = "Households Without Internet (%)") +
+  scale_x_continuous(expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
   scale_color_manual(values = scale_map$color,
                      labels = scale_map$name,
-                     name = "Ideology group") +
+                     name = "Ideology Group") +
   scale_shape_manual(values = scale_map$shape,
                      labels = scale_map$name,
-                     name = "Ideology group")
-# Plot 6: Download Speed vs. Ideology Score
+                     name = "Ideology Group")
+
+# Plot 6: Download Speed vs. Average Internet Download Speed
 plot6 <- ggplot(
   data,
   aes(
@@ -378,30 +397,25 @@ plot6 <- ggplot(
   )
 ) +
   geom_point(size = 2) +
-  labs(title = "(F) Broadband tech supply(%) \n vs. download speed",
+  labs(title = "(F) Broadband Tech Supply \nvs. Download Speed",
        x = "Download Speed (Mbps)", y = "Modern Broadband Tech (%)") +
+  scale_x_continuous(expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
   scale_color_manual(values = scale_map$color,
                      labels = scale_map$name,
-                     name = "Ideology group") +
+                     name = "Ideology Group") +
   scale_shape_manual(values = scale_map$shape,
                      labels = scale_map$name,
-                     name = "Ideology group")
-
+                     name = "Ideology Group")
 
 # Arrange the plots into a 3x2 grid
-arranged_plots <-
-  ggarrange(
-    plot1,
-    plot2,
-    plot3,
-    plot4,
-    plot5,
-    plot6,
-    ncol = 3,
-    nrow = 2,
-    common.legend = TRUE,
-    legend = "bottom"
-  )
+arranged_plots <- ggarrange(
+  plot1, plot2, plot3, plot4, plot5, plot6,
+  ncol = 3,
+  nrow = 2,
+  common.legend = TRUE,
+  legend = "bottom"
+)
 
 # Print the arranged plots
 print(arranged_plots)
@@ -413,7 +427,7 @@ ggsave(path_out,
        width = 12,
        height = 8)
 
-# Median Income ($) vs other features plot
+# Median Income vs other features plot
 # Plot 1: Median Income vs. Education (%)
 plot1 <- ggplot(
   data,
@@ -425,15 +439,16 @@ plot1 <- ggplot(
   )
 ) +
   geom_point(size = 2) +
-  labs(title = "(A) Education (%) vs. median income ($)",
-       x = "Median income ($)", y = "Education (%)") +
+  labs(title = "(A) Education vs. Median Income",
+       x = "Median Income ($)", y = "Education (%)") +
+  scale_x_continuous(expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
   scale_color_manual(values = scale_map$color,
                      labels = scale_map$name,
-                     name = "Ideology group") +
+                     name = "Ideology Group") +
   scale_shape_manual(values = scale_map$shape,
                      labels = scale_map$name,
-                     name = "Ideology group") +
-  theme(axis.title.x = element_blank())  # Remove x-axis label
+                     name = "Ideology Group")
 
 print(plot1)
 
@@ -448,15 +463,18 @@ plot2 <- ggplot(
   )
 ) +
   geom_point(size = 2) +
-  labs(title = "(B) Deployed broadband tech \n vs. median income ($)",
-       x = "Median income ($)", y = "Modern Broadband Tech (%)") +
+  labs(title = "(B) Deployed Broadband Tech vs. Median Income",
+       x = "Median Income ($)", y = "Modern Broadband Tech (%)") +
+  scale_x_continuous(expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
   scale_color_manual(values = scale_map$color,
                      labels = scale_map$name,
-                     name = "Ideology group") +
+                     name = "Ideology Group") +
   scale_shape_manual(values = scale_map$shape,
                      labels = scale_map$name,
-                     name = "Ideology group") +
-  theme(axis.title.x = element_blank())  # Remove x-axis label
+                     name = "Ideology Group")
+
+print(plot2)
 
 # Plot 3: Median Income vs. White Population Percentage
 plot3 <- ggplot(
@@ -469,17 +487,20 @@ plot3 <- ggplot(
   )
 ) +
   geom_point(size = 2) +
-  labs(title = "(C) White population (%) \n vs. median income ($)",
-       x = "Median income ($)", y = "White population (%)") +
+  labs(title = "(C) White Population vs. Median Income",
+       x = "Median Income ($)", y = "White Population (%)") +
+  scale_x_continuous(expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
   scale_color_manual(values = scale_map$color,
                      labels = scale_map$name,
-                     name = "Ideology group") +
+                     name = "Ideology Group") +
   scale_shape_manual(values = scale_map$shape,
                      labels = scale_map$name,
-                     name = "Ideology group") +
-  theme(axis.title.x = element_blank())  # Remove x-axis label
+                     name = "Ideology Group")
 
-# Plot 4: Median Income vs. Urban population (%)
+print(plot3)
+
+# Plot 4: Median Income vs. Urban Population (%)
 plot4 <- ggplot(
   data,
   aes(
@@ -490,16 +511,20 @@ plot4 <- ggplot(
   )
 ) +
   geom_point(size = 2) +
-  labs(title = "(D) Urban population (%) \n vs. median income ($)",
-       x = "Median income ($)", y = "Urban population (%)") +
+  labs(title = "(D) Urban Population vs. Median Income",
+       x = "Median Income ($)", y = "Urban Population (%)") +
+  scale_x_continuous(expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
   scale_color_manual(values = scale_map$color,
                      labels = scale_map$name,
-                     name = "Ideology group") +
+                     name = "Ideology Group") +
   scale_shape_manual(values = scale_map$shape,
                      labels = scale_map$name,
-                     name = "Ideology group")
+                     name = "Ideology Group")
 
-# Plot 5: Median Income vs. Households without Internet
+print(plot4)
+
+# Plot 5: Median Income vs. Households Without Internet
 plot5 <- ggplot(
   data,
   aes(
@@ -510,16 +535,20 @@ plot5 <- ggplot(
   )
 ) +
   geom_point(size = 2) +
-  labs(title = "(E) Households without internet (%) \n vs. median income ($)",
-       x = "Median income ($)", y = "Households without internet (%)") +
+  labs(title = "(E) Households Without Internet\n vs. Median Income",
+       x = "Median Income ($)", y = "Households Without Internet (%)") +
+  scale_x_continuous(expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
   scale_color_manual(values = scale_map$color,
                      labels = scale_map$name,
-                     name = "Ideology group") +
+                     name = "Ideology Group") +
   scale_shape_manual(values = scale_map$shape,
                      labels = scale_map$name,
-                     name = "Ideology group")
+                     name = "Ideology Group")
 
-# Plot 6: Median Income vs. Avg Internet Download Speed
+print(plot5)
+
+# Plot 6: Median Income vs. Average Internet Download Speed
 plot6 <- ggplot(
   data,
   aes(
@@ -530,14 +559,18 @@ plot6 <- ggplot(
   )
 ) +
   geom_point(size = 2) +
-  labs(title = "(F) Avg internet download speed (Mbps)\n vs. median income ($)",
-       x = "Median income ($)", y = "Avg internet download speed (Mbps)") +
+  labs(title = "(F) Avg Internet Download Speed\n vs. Median Income",
+       x = "Median Income ($)", y = "Avg Internet Download Speed (Mbps)") +
+  scale_x_continuous(expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
   scale_color_manual(values = scale_map$color,
                      labels = scale_map$name,
-                     name = "Ideology group") +
+                     name = "Ideology Group") +
   scale_shape_manual(values = scale_map$shape,
                      labels = scale_map$name,
-                     name = "Ideology group")
+                     name = "Ideology Group")
+
+print(plot6)
 
 # Arrange the plots into a 3x2 grid
 arranged_plots <-
@@ -557,11 +590,13 @@ arranged_plots <-
 # Print the arranged plots
 print(arranged_plots)
 
+# Save the arranged plots to a file
 path_out = file.path(folder, 'figures', 'median_income_features.png')
 ggsave(path_out,
        arranged_plots,
        width = 12,
        height = 8)
+
 
 # 4th population white percentage
 # Plot 1: White population (%) vs. Education (%)
@@ -576,19 +611,21 @@ plot1 <- ggplot(
   )
 ) +
   geom_point(size = 2) +
-  labs(title = "(A) Education (%) vs. white population (%)",
+  labs(title = "(A) Education vs. White Population",
        x = "White Population (%)", y = "Education (%)") +
+  scale_x_continuous(expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
   scale_color_manual(values = scale_map$color,
                      labels = scale_map$name,
                      name = "Ideology group") +
   scale_shape_manual(values = scale_map$shape,
                      labels = scale_map$name,
-                     name = "Ideology group") +
-  theme(axis.title.x = element_blank())  # Remove x-axis label
+                     name = "Ideology group")
 
 print(plot1)
 
-# Plot 2: Advanced tech vs. White Population (%)
+# Plot 2: Advanced tech vs. White Population
+
 plot2 <- ggplot(
   data,
   aes(
@@ -599,15 +636,18 @@ plot2 <- ggplot(
   )
 ) +
   geom_point(size = 2) +
-  labs(title = "(B) Deployed broadband tech \n vs. white population (%)",
-       x = "White Population (%)", y = "Modern Broadband Tech (%)") +
+  labs(title = "(B) Advanced Tech vs. White Population",
+       x = "White Population (%)", y = "Advanced Tech (%)") +
+  scale_x_continuous(expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
   scale_color_manual(values = scale_map$color,
                      labels = scale_map$name,
                      name = "Ideology group") +
   scale_shape_manual(values = scale_map$shape,
                      labels = scale_map$name,
-                     name = "Ideology group") +
-  theme(axis.title.x = element_blank())  # Remove x-axis label
+                     name = "Ideology group")
+
+print(plot2)
 
 # Plot 3: Median Income vs. White Population Percentage
 plot3 <- ggplot(
@@ -620,17 +660,18 @@ plot3 <- ggplot(
   )
 ) +
   geom_point(size = 2) +
-  labs(title = "(C) Median income ($) \n vs. white population (%)",
-       x = "White Population (%)", y = "Median income ($)") +
+  labs(title = "(C) Median Income vs. White Population",
+       x = "White Population (%)", y = "Median Income ($)") +
+  scale_x_continuous(expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
   scale_color_manual(values = scale_map$color,
                      labels = scale_map$name,
                      name = "Ideology group") +
   scale_shape_manual(values = scale_map$shape,
                      labels = scale_map$name,
-                     name = "Ideology group") +
-  theme(axis.title.x = element_blank())  # Remove x-axis label
+                     name = "Ideology group")
 
-# Plot 4: Median Income vs. Urban population (%)
+# Plot 4: Urban Population vs. White Population
 plot4 <- ggplot(
   data,
   aes(
@@ -641,8 +682,10 @@ plot4 <- ggplot(
   )
 ) +
   geom_point(size = 2) +
-  labs(title = "(D) Urban population (%) \n vs. white population (%)",
+  labs(title = "(D) Urban Population\n vs. White Population",
        x = "White Population (%)", y = "Urban Population (%)") +
+  scale_x_continuous(expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
   scale_color_manual(values = scale_map$color,
                      labels = scale_map$name,
                      name = "Ideology group") +
@@ -650,7 +693,7 @@ plot4 <- ggplot(
                      labels = scale_map$name,
                      name = "Ideology group")
 
-# Plot 5: Median Income vs. Households without Internet
+# Plot 5: Households without Internet vs. White Population
 plot5 <- ggplot(
   data,
   aes(
@@ -661,8 +704,10 @@ plot5 <- ggplot(
   )
 ) +
   geom_point(size = 2) +
-  labs(title = "(E) Households without internet (%) \n vs. white population (%)",
-       x = "White Population (%)", y = "Households without internet (%)") +
+  labs(title = "(E) Households without Internet\n vs. White Population",
+       x = "White Population (%)", y = "Households without Internet (%)") +
+  scale_x_continuous(expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
   scale_color_manual(values = scale_map$color,
                      labels = scale_map$name,
                      name = "Ideology group") +
@@ -670,7 +715,7 @@ plot5 <- ggplot(
                      labels = scale_map$name,
                      name = "Ideology group")
 
-# Plot 6: Median Income vs. Avg Internet Download Speed
+# Plot 6: Avg Internet Download Speed vs. White Population
 plot6 <- ggplot(
   data,
   aes(
@@ -681,8 +726,10 @@ plot6 <- ggplot(
   )
 ) +
   geom_point(size = 2) +
-  labs(title = "(F) Avg internet download speed (Mbps)\n vs. white population (%)",
-       x = "White Population (%)", y = "Avg internet download speed (Mbps)") +
+  labs(title = "(F) Avg Internet Download Speed\n vs. White Population",
+       x = "White Population (%)", y = "Avg Internet Download Speed (Mbps)") +
+  scale_x_continuous(expand = c(0, 0)) +
+  scale_y_continuous(expand = c(0, 0)) +
   scale_color_manual(values = scale_map$color,
                      labels = scale_map$name,
                      name = "Ideology group") +
@@ -706,10 +753,11 @@ arranged_plots_white_population <-
   )
 
 # Print the arranged plots
-print(arranged_plots)
+print(arranged_plots_white_population)
 
 path_out = file.path(folder, 'figures', 'white_population_features.png')
 ggsave(path_out,
-       arranged_plots,
+       arranged_plots_white_population,
        width = 12,
        height = 8)
+
