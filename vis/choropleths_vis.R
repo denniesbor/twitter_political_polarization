@@ -178,7 +178,7 @@ plot0 <- ggplot(merged_congress_bios) +
     panel.background = element_rect(fill = "#f5f5f2", color = NA),
     legend.background = element_rect(fill = "#f5f5f2", color = NA),
     plot.title = element_text(
-      size = 12,
+      size = 10,
       hjust = 0.01,
       margin = margin(
         b = -0.1,
@@ -281,7 +281,6 @@ plot3 <- ggplot(merged_data) +
   scale_fill_viridis_c(
     trans = "sqrt",
     direction = -1,
-    breaks = c(10, 20, 30, 40, 50, 60, 70, 80),
     name = "Advanced Broadband (%)"
   ) +
   labs(title = "(D) Advanced Broadband Technology \n (DOCSIS 3.0, 3.1, and Fiber)") +
@@ -324,7 +323,6 @@ plot4 <- ggplot(merged_data) +
   scale_fill_viridis_c(
     trans = "sqrt",
     direction = -1,
-    breaks = c(56, 65, 75, 85, 95, 100),
     name = "Education (%)"
   ) +
   labs(title = "(E) Adult Age 25+ \nHigh School Education") +
@@ -402,9 +400,8 @@ plot6 <- ggplot(merged_congress_bios) +
           color = "white") +
   theme_void() +
   scale_fill_viridis_c(
-    trans = "log",
+    trans = "sqrt",
     direction = -1,
-    breaks = c(0, 2, 4, 8, 16, 32, 64, 128, 256),
     name = "Frequency"
   ) +
   labs(title = "(B) Frequency of Broadband-Related Tweets \nby Congressional District Member") +
