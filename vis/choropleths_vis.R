@@ -2,31 +2,72 @@ library(tidyverse)
 library(readr)
 library(tidyr)
 library(broom)
+library(jsonlite)
+library(usmap)
+library(dplyr)
+library(tigris)
+library(tidycensus)
+library(patchwork)
+library(sf)
+library(sp)
+library(viridis)
+library(ggpubr)
+library(geojsonio)
 
 # install.packages("sf")
 # install.packages("sp")
-
-library(sf)
-library(sp)
+# install.packages("patchwork")
 
 
 # install.packages("ggpubr")
 # install.packages("viridis")
-library(viridis)
-library(ggpubr)
-library(geojsonio)
+
+
+options(tigris_use_cache = TRUE)
 
 folder = dirname(rstudioapi::getSourceEditorContext()$path)
 data_directory = file.path(folder, '..', 'data')
 setwd(data_directory)
 
-# read the files
-data <- read.csv("congressional_district_broadband_data.csv")
-shape_data <- st_read("tl_2019_us_cd116")
+# JSON mapper
+json_file <- fromJSON("json_mapper.json")
+
+# Get the congressional districts
+congressional_districts <- tigris::congressional_districts(cb = TRUE, year=2019, resolution = "20m")
+
+shape_data <- tigris::shift_geometry(congressional_districts)
+
+# Congress data
+cd116_congress_bios <- read.csv("cd116_bio.csv")
+
+# Copngressional demographic data
+cd_demogr_df <-
+  read.csv("congressional_district_demographic_data.csv")
+
+# Broadband demand and supply data
+broadband = read.csv("broadband_demand_supply_v2.csv")
+broadband <- broadband %>%
+  rename(district = cd116)
+
+data <- cd_demogr_df %>%
+  inner_join(broadband, by = c("state", "district")) %>%
+  mutate(new_index = row_number()) %>%
+  select(new_index, everything()) %>%
+  rename(index = new_index)
+
+# Use mutate to create a new column 'state_code' by applying a function to each value in the 'state' column
+cd116_congress_bios <- cd116_congress_bios %>%
+  mutate(state_code = sapply(state, function(state)
+    json_file$state_code[[state]]))
+
+data <- data %>%
+  mutate(state_code = sapply(state, function(state)
+    json_file$state_code[[state]]))
 
 # Exclude states not within the US. highland
-excluded_states <- c("AK", "HI", "AS", "PR", "VI")
-data <- data[!data$state %in% excluded_states,]
+excluded_states <- c("AS", "PR", "VI") # AK, Hi
+data <- data[!data$state %in% excluded_states, ]
+cd116_congress_bios <- cd116_congress_bios[!cd116_congress_bios$state %in% excluded_states, ]
 
 # median value
 median_value <- median(data$`avgmaxaddown..cd.`)
@@ -45,23 +86,17 @@ data$percentage_adv_tech..cd. <- data$percentage_adv_tech..cd. * 100
 # Round to 0 decimal places
 data$cd_urban_pop_ratio <- as.integer(data$cd_urban_pop_ratio, 0)
 
-# Function to format numbers with leading zeros
-format_with_leading_zeros <- function(number, width) {
-  formatC(number,
-          width = width,
-          format = "d",
-          flag = "0")
-}
-
 # Create the geoid column
-data$geoid <- ifelse(
-  data$district >= 10,
-  paste0(data$state_code, data$district),
-  paste0(data$state_code, "0", data$district)
-)
+data$geoid <-
+  paste0(sprintf("%02d", as.numeric(data$state_code)), sprintf("%02d", as.numeric(data$district)))
+
+# Create the geoid column for the congress bios
+cd116_congress_bios$geoid <-
+  paste0(sprintf("%02d", as.numeric(cd116_congress_bios$state_code)), sprintf("%02d", as.numeric(cd116_congress_bios$district)))
+
 
 # Mutate party labels
-data <- data %>%
+cd116_congress_bios <- cd116_congress_bios %>%
   mutate(party_factor = factor(
     party,
     levels = c("R", "D", "I"),
@@ -69,8 +104,8 @@ data <- data %>%
   ))
 
 # Reorder and mutate ideology_cluster from left -> right
-data$ideology_cluster <- factor(
-  data$ideology_cluster,
+cd116_congress_bios$ideology_cluster <- factor(
+  cd116_congress_bios$ideology_cluster,
   
   levels = c(
     "Far Left",
@@ -81,12 +116,20 @@ data$ideology_cluster <- factor(
   )
 )
 
-# Step 3: Merging the Datasets
+# Step 3: Merging the broadband and demographic data with shp files
 merged_data <- shape_data %>%
-  inner_join(data, by = c("GEOID" = "geoid")) # Adjust the column names as per your data
+  inner_join(data, by = c("GEOID" = "geoid"))
+
+merged_congress_bios <- shape_data %>%
+  inner_join(cd116_congress_bios, by = c("GEOID" = "geoid"))
 
 # Add centroids to the data
 merged_data$geometry_centroid <- st_centroid(merged_data$geometry)
+
+# Add centroids to the data
+merged_congress_bios$geometry_centroid <-
+  st_centroid(merged_congress_bios$geometry)
+
 
 # Calculate the minimum and maximum for each variable to be plotted
 summary_stats <- merged_data %>%
@@ -106,9 +149,7 @@ summary_stats <- merged_data %>%
       na.rm = TRUE
     ),
     min_median_income = min(median_income, na.rm = TRUE),
-    max_median_income = max(median_income, na.rm = TRUE),
-    min_median_ideology = min(ideology, na.rm = TRUE),
-    max_median_ideology = max(ideology, na.rm = TRUE)
+    max_median_income = max(median_income, na.rm = TRUE)
   )
 
 # Create legend breaks based on the minimum and maximum values
@@ -116,18 +157,10 @@ create_breaks <- function(min_val, max_val) {
   breaks = exp(seq(log(min_val), log(max_val), length.out = 6))
   return(round(breaks, 0))
 }
+
 # Political ideologies in the US. Congress
-plot0 <- ggplot(merged_data) +
+plot0 <- ggplot(merged_congress_bios) +
   geom_sf(aes(fill = ideology_cluster)) +
-  geom_text(
-    aes(
-      label = paste0(state, sprintf("%02d", district)),
-      x = st_coordinates(geometry_centroid)[, 1],
-      y = st_coordinates(geometry_centroid)[, 2]
-    ),
-    size = 1.5,
-    check_overlap = TRUE
-  ) +
   theme_void() +
   scale_fill_manual(
     values = c(
@@ -145,11 +178,18 @@ plot0 <- ggplot(merged_data) +
       "Right Centrist",
       "Far Right"
     ),
-    guides(fill = guide_legend(keyheight = unit(1.5, "lines"), label.position = "bottom", label.size = 6))
+    guide = guide_legend(
+      keyheight = unit(3, units = "mm"),
+      keywidth = unit(16, units = "mm"),
+      label.position = "bottom",
+      title.position = 'top',
+      nrow = 1
+    )
   ) +
   labs(title = "(A) 116th Congressional \nDistricts Ideologies") +
   theme(
     text = element_text(color = "#22211d"),
+    plot.margin = margin(0, 0, 0, 0, "cm"),
     plot.background = element_rect(fill = "#f5f5f2", color = NA),
     panel.background = element_rect(fill = "#f5f5f2", color = NA),
     legend.background = element_rect(fill = "#f5f5f2", color = NA),
@@ -165,26 +205,21 @@ plot0 <- ggplot(merged_data) +
       )
     ),
     legend.position = "bottom",
-    legend.text = element_text(size = 10, color = "blue"),  # Adjust size and color here
+    legend.text = element_text(size = 10, color = "blue"),
+    # Adjust size and color here
     legend.title = element_text(size = 10)  # Adjusting legend title size
   ) +
   coord_sf()
 
-`# Plot 1: Choropleth Urban Population
+print(plot0)
+
+# Plot 1: Choropleth Urban Population
 plot1 <- ggplot(merged_data) +
   geom_sf(aes(fill = cd_urban_pop_ratio)) +
-  geom_text(
-    aes(
-      label = paste0(state, sprintf("%02d", district)),
-      x = st_coordinates(geometry_centroid)[, 1],
-      y = st_coordinates(geometry_centroid)[, 2]
-    ),
-    size = 1,
-    check_overlap = TRUE
-  ) +
   theme_void() +
   scale_fill_viridis(
     trans = "log",
+    direction = -1,
     breaks = create_breaks(summary_stats$min_urban_pop, summary_stats$max_urban_pop),
     name = "Urban Population (%)",
     guide = guide_legend(
@@ -198,6 +233,7 @@ plot1 <- ggplot(merged_data) +
   labs(title = "(B) Urban Population per \nCongressional District") +
   theme(
     text = element_text(color = "#22211d"),
+    plot.margin = margin(0, 0, 0, 0, "cm"),
     plot.background = element_rect(fill = "#f5f5f2", color = NA),
     panel.background = element_rect(fill = "#f5f5f2", color = NA),
     legend.background = element_rect(fill = "#f5f5f2", color = NA),
@@ -216,21 +252,15 @@ plot1 <- ggplot(merged_data) +
   ) +
   coord_sf()
 
-# Plot 2: Median Broadband Download Speed
+print(plot1)
+
+# Plot 2: Median Broadband \nDownload Speed
 plot2 <- ggplot(merged_data) +
   geom_sf(aes(fill = avgmaxaddown..cd.)) +
-  geom_text(
-    aes(
-      label = paste0(state, sprintf("%02d", district)),
-      x = st_coordinates(geometry_centroid)[, 1],
-      y = st_coordinates(geometry_centroid)[, 2]
-    ),
-    size = 2,
-    check_overlap = TRUE
-  ) +
   theme_void() +
   scale_fill_viridis(
     trans = "log",
+    direction = -1,
     breaks = create_breaks(
       summary_stats$min_download_speed,
       summary_stats$max_download_speed
@@ -247,6 +277,7 @@ plot2 <- ggplot(merged_data) +
   labs(title = "(C) Median Broadband \nDownload Speed") +
   theme(
     text = element_text(color = "#22211d"),
+    plot.margin = margin(0, 0, 0, 0, "cm"),
     plot.background = element_rect(fill = "#f5f5f2", color = NA),
     panel.background = element_rect(fill = "#f5f5f2", color = NA),
     legend.background = element_rect(fill = "#f5f5f2", color = NA),
@@ -265,21 +296,15 @@ plot2 <- ggplot(merged_data) +
   ) +
   coord_sf()
 
+print(plot2)
+
 # Plot 3: Advanced Broadband Technology
 plot3 <- ggplot(merged_data) +
   geom_sf(aes(fill = percentage_adv_tech..cd.)) +
-  geom_text(
-    aes(
-      label = paste0(state, sprintf("%02d", district)),
-      x = st_coordinates(geometry_centroid)[, 1],
-      y = st_coordinates(geometry_centroid)[, 2]
-    ),
-    size = 2,
-    check_overlap = TRUE
-  ) +
   theme_void() +
   scale_fill_viridis(
     trans = "log",
+    direction = -1,
     breaks = create_breaks(
       summary_stats$min_adv_broadband,
       summary_stats$max_adv_broadband
@@ -294,9 +319,10 @@ plot3 <- ggplot(merged_data) +
       direction = "horizontal"
     )
   ) +
-  labs(title = "(D) Advanced Broadband Technology\n (DOCSIS 3.0, 3.1, and Fiber)") +
+  labs(title = "(D) Advanced Broadband Technology \n (DOCSIS 3.0, 3.1, and Fiber)") +
   theme(
     text = element_text(color = "#22211d"),
+    plot.margin = margin(0, 0, 0, 0, "cm"),
     plot.background = element_rect(fill = "#f5f5f2", color = NA),
     panel.background = element_rect(fill = "#f5f5f2", color = NA),
     legend.background = element_rect(fill = "#f5f5f2", color = NA),
@@ -315,23 +341,17 @@ plot3 <- ggplot(merged_data) +
   ) +
   coord_sf()
 
+print(plot3)
+
 # Plot 4: Adult Age 25+ High School Education
 plot4 <- ggplot(merged_data) +
   geom_sf(
     aes(fill = X2014_2018_acs_educational_attainment_among_adults_25._and_median_household_income_high_school_or_greater)
   ) +
-  geom_text(
-    aes(
-      label = paste0(state, sprintf("%02d", district)),
-      x = st_coordinates(geometry_centroid)[, 1],
-      y = st_coordinates(geometry_centroid)[, 2]
-    ),
-    size = 2,
-    check_overlap = TRUE
-  ) +
   theme_void() +
   scale_fill_viridis(
     trans = "log",
+    direction = -1,
     breaks = create_breaks(summary_stats$min_education, summary_stats$max_education),
     name = "Education (%)",
     guide = guide_legend(
@@ -342,9 +362,10 @@ plot4 <- ggplot(merged_data) +
       nrow = 1
     )
   ) +
-  labs(title = "(E) Adult Age 25+ High School Education") +
+  labs(title = "(E) Adult Age 25+ \nHigh School Education") +
   theme(
     text = element_text(color = "#22211d"),
+    plot.margin = margin(0, 0, 0, 0, "cm"),
     plot.background = element_rect(fill = "#f5f5f2", color = NA),
     panel.background = element_rect(fill = "#f5f5f2", color = NA),
     legend.background = element_rect(fill = "#f5f5f2", color = NA),
@@ -363,21 +384,15 @@ plot4 <- ggplot(merged_data) +
   ) +
   coord_sf()
 
+print(plot4)
+
 # Plot 5: Median Income
 plot5 <- ggplot(merged_data) +
   geom_sf(aes(fill = median_income)) +
-  geom_text(
-    aes(
-      label = paste0(state, sprintf("%02d", district)),
-      x = st_coordinates(geometry_centroid)[, 1],
-      y = st_coordinates(geometry_centroid)[, 2]
-    ),
-    size = 2,
-    check_overlap = TRUE
-  ) +
   theme_void() +
   scale_fill_viridis(
     trans = "log",
+    direction = -1,
     breaks = create_breaks(
       summary_stats$min_median_income,
       summary_stats$max_median_income
@@ -394,6 +409,7 @@ plot5 <- ggplot(merged_data) +
   labs(title = "(F) Median Income") +
   theme(
     text = element_text(color = "#22211d"),
+    plot.margin = margin(0, 0, 0, 0, "cm"),
     plot.background = element_rect(fill = "#f5f5f2", color = NA),
     panel.background = element_rect(fill = "#f5f5f2", color = NA),
     legend.background = element_rect(fill = "#f5f5f2", color = NA),
@@ -412,32 +428,34 @@ plot5 <- ggplot(merged_data) +
   ) +
   coord_sf()
 
-# Panel all the plots
-arranged_plots <- ggarrange(plot0,
-                            plot1,
-                            plot2,
-                            plot3,
-                            plot4,
-                            plot5,
-                            nrow = 3,
-                            ncol = 2,
-                            widths = c(1, 1, 1), 
-                            heights = c(1, 1))
+print(plot5)
 
-print(arranged_plots)
+# Combine the plots using patchwork
+combined_plot_0_1 <-  plot0 / plot1
+combined_plot_2_5 <-  plot2 / plot3 / plot4 / plot5
 
-path_out = file.path(folder, 'figures', 'choropleth.png')
+# Adjust the layout
+combined_plot_2_5 <- combined_plot + plot_layout(ncol = 2, nrow = 2) & 
+  theme(
+    plot.margin = unit(c(0, 0, 0, 0), "null")
+  )
 
-ggsave(path_out,
-       arranged_plots,
+combined_plot_0_1 <- combined_plot_0_1 + plot_layout(ncol = 2, nrow = 1) & 
+  theme(
+    plot.margin = unit(c(0, 0, 0, 0), "null")
+  )
+
+print(combined_plot_2_5)
+
+path_out_1 = file.path(folder, 'figures', 'choropleth_0_1.png')
+path_out = file.path(folder, 'figures', 'choropleth_2_5.png')
+
+ggsave(path_out_1,
+       combined_plot_0_1,
        width = 12,
        height = 8)
 
-# Panel all the plots
-arranged_plots <- ggarrange(plot0,
-                            plot1,
-                            nrow = 1,
-                            ncol = 2,
-                            widths = c(1, 1, 1), 
-                            heights = c(1, 1))
-print(arranged_plots)
+ggsave(path_out,
+       combined_plot_2_5,
+       width = 12,
+       height = 8)
