@@ -101,13 +101,23 @@ scale_map <- data.frame(
 )
 
 # Create the color and shape map with actual color codes
-scale_map <- list(color = c("Far Left" = "#2166ac", 
-                            "Left Centrist" = "#4393c3", 
-                            "Centrist" = "#fddbc7", 
-                            "Right Centrist" = "#d6604d", 
-                            "Far Right" = "#b2182b"),
-                  name = c("Far Left", "Left Centrist", "Centrist", "Right Centrist", "Far Right"),
-                  shape = c(16, 17, 18, 19, 20))
+scale_map <- list(
+  color = c(
+    "Far Left" = "#2166ac",
+    "Left Centrist" = "#4393c3",
+    "Centrist" = "#fddbc7",
+    "Right Centrist" = "#d6604d",
+    "Far Right" = "#b2182b"
+  ),
+  name = c(
+    "Far Left",
+    "Left Centrist",
+    "Centrist",
+    "Right Centrist",
+    "Far Right"
+  ),
+  shape = c(16, 17, 18, 19, 20)
+)
 
 # Ideology vs Other Features Plot
 # Plot 1: Ideology Score vs. Education
@@ -410,7 +420,12 @@ plot6 <- ggplot(
 
 # Arrange the plots into a 3x2 grid
 arranged_plots <- ggarrange(
-  plot1, plot2, plot3, plot4, plot5, plot6,
+  plot1,
+  plot2,
+  plot3,
+  plot4,
+  plot5,
+  plot6,
   ncol = 3,
   nrow = 2,
   common.legend = TRUE,
@@ -760,4 +775,3 @@ ggsave(path_out,
        arranged_plots_white_population,
        width = 12,
        height = 8)
-
